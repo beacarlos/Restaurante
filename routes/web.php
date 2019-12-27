@@ -14,3 +14,20 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/dashboard', function () {
+    return view('Layouts.dashboard');
+});
+
+Route::get('/mesa', function () {
+    return view('mesa.mesa');
+});
+
+Route::get('/cardapio', function () {
+    return view('mesa.mesa');
+});
+
+Route::get('/pedido', function () {
+    return view('mesa.mesa');
+});
