@@ -25,9 +25,9 @@ Route::get('/mesa', function () {
 });
 
 Route::get('/cardapio', function () {
-    return view('mesa.mesa');
+    return view('cardapio.cardapio');
 });
 
 Route::get('/pedido', function () {
-    return view('mesa.mesa');
+    return view('pedido.pedido');
 });
