@@ -164,7 +164,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link" style="color: white !important;">
+            <a href="/cardapio" class="nav-link" style="color: white !important;">
               <img class="nav-icon" src="img/restaurante.png">
               <p>
                 Cardápio

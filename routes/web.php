@@ -10,13 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
 
-
-Route::get('/dashboard', function () {
+Route::get('/', function () {
     return view('Layouts.dashboard');
 });
 
@@ -24,9 +24,7 @@ Route::get('/mesa', function () {
     return view('mesa.mesa');
 });
 
-Route::get('/cardapio', function () {
-    return view('cardapio.cardapio');
-});
+Route::get('/cardapio', 'CardapioController@index');
 
 Route::get('/pedido', function () {
     return view('pedido.pedido');
