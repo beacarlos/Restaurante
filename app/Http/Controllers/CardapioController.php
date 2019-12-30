@@ -23,7 +23,7 @@ class CardapioController extends Controller
      */
     public function create()
     {
-        //
+        return view('cardapio.novoprato');
     }
 
     /**

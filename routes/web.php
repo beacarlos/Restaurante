@@ -25,6 +25,7 @@ Route::get('/mesa', function () {
 });
 
 Route::get('/cardapio', 'CardapioController@index');
+Route::get('/cardapio/novo', 'CardapioController@create');
 
 Route::get('/pedido', function () {
     return view('pedido.pedido');
