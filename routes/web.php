@@ -30,3 +30,5 @@ Route::get('/cardapio/novo', 'CardapioController@create');
 Route::get('/pedido', function () {
     return view('pedido.pedido');
 });
+
+Route::post('/cardapio', 'CardapioController@store');

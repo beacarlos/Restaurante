@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Prato;
 
 class CardapioController extends Controller
 {
@@ -34,7 +35,12 @@ class CardapioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $prat = new Prato();
+        $prat->nome = $request->input('uname');
+        $prat->descricao = 
+
+        $prat->save();
+
     }
 
     /**

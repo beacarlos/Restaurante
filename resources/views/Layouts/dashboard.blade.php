@@ -17,6 +17,10 @@
   <link rel="stylesheet" href="{{ asset('dist/css/sidebar.css') }}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!--Para toggle do status do prato -->
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
+  
 </head>
 
 <body class="hold-transition sidebar-mini" style="background-color: white !important;">
@@ -194,7 +198,6 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Pagina</h1>
           </div><!-- /.col -->
       <!-- /.col -->
         </div><!-- /.row -->
@@ -238,5 +241,8 @@
 <script src="{{ asset('plugins/chart.js/Chart.min.js') }} "></script>
 <script src="{{ asset('dist/js/demo.js') }} "></script>
 <script src="{{ asset('dist/js/pages/dashboard3.js') }} "></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+
 </body>
 </html>

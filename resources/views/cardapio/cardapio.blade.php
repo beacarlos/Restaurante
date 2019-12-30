@@ -17,32 +17,81 @@
   padding: 5px 14px;
   border-radius: 10px;
 }
-.preco {
-    background-color: Tomato;
-    margin-left: 60%;
-    width: 40%;
-    height: 15%;
-    border-radius: 10px;
-}
+
 #valor{
-    position:relative;
-    color: white;
-    margin-left: 10px;
-    margin-top: 5px;
+  margin-left: 25%;
 }
+.containermt-3{
+  margin-left:80%;
+}
+
 </style>
 
-</head>
-<body>
+<div class="containermt-3">
+  <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Novo prato
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Adicione um novo prato</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="container">
+            <form action="/cardapio" method="POST" class="was-validated">
+              <div class="form-group">
+                <label for="uname">Nome:</label>
+                <input type="text" class="form-control" id="uname" placeholder="Enter username" name="name" required>
+                
+              </div>
+              <div class="form-group">
+                <label for="uname">Preço:</label>
+                <input type="number" class="form-control" id="price-number" placeholder="Enter price" name="price" required>
+              </div>
+
+              <div class="form-group">
+                <label for="description">Descriçao</label>
+                <textarea class="form-control" rows="5" id="comment" required name="descricao"></textarea>
+              </div>
+              <div>
+                <input type="checkbox" data-toggle="toggle" data-on="Ativo" data-off="Desativado"  data-width="110" name="status">
+              </div>
+          </div>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+</div>
 
 <div class="card">
   <img src="https://static-images.ifood.com.br/image/upload/f_auto,t_medium/pratos/712f2c3e-43ed-42b0-801b-38567e20c9bf/201910111339_gPTF_i.jpg" alt="W3Schools.com">
   <div class="container">
     <h4><b>Mistão para 03 pessoas</b></h4>
-    <p>Mistao para tres pessos,(frango assado, linguiça, carne bovina,, uma porçao de baiao a moda, uma porçao de batata frita, vinagrete e farofa.)</p> 
+    <p>Mistao para tres pessos,(frango assado, linguiça, carne bovina, uma porçao de baiao a moda, uma porçao de batata frita, vinagrete e farofa.)</p> 
+  </div>
+  <div class="disponivel">
+    <!--<button type="button" class="btn btn-success" id="status">Ativo</button>-->
+    <!--<button type="button" class="btn btn-warning" id="valor" disabled>Valor: R$ 48,90</button>-->
   </div>
   <div class="preco">
-    <h6 id="valor">Valor: R$ 48,90</h6>
+    <h6 id="valor" class="btn btn-warning">Valor: R$ 48,90</h6>
   </div>
 </div>
 
