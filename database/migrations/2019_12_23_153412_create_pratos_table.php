@@ -16,6 +16,7 @@ class CreatePratosTable extends Migration
         Schema::create('pratos', function (Blueprint $table) {
             $table->increments('prato_id');
             $table->string('nome', 45)->nulllable();
+            $table->string('descricao', 200)->nullable();
             $table->double('preco', 8, 2)->nullable();
             $table->boolean('ativo')->default(1);
             $table->integer('categoria_prato_fk')->unsigned();

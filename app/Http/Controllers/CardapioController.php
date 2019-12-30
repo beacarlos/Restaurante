@@ -37,7 +37,9 @@ class CardapioController extends Controller
     {
         $prat = new Prato();
         $prat->nome = $request->input('uname');
-        $prat->descricao = 
+        $prat->preco = $request->input('price-number');
+        $prat->descricao = $request->input('descricao');
+        
 
         $prat->save();
 
