@@ -57,6 +57,16 @@
                 <label for="uname">Preço:</label>
                 <input type="number" class="form-control" id="price-number" placeholder="Enter price" name="price" required>
               </div>
+              <div class="form-group">
+                  <label for="exampleFormControlSelect1">Example select</label>
+                  <select class="form-control" id="exampleFormControlSelect1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+              </div>
 
               <div class="form-group">
                 <label for="description">Descriçao</label>
@@ -77,8 +87,55 @@
       </div>
     </div>
   </div>
-  
 </div>
+
+
+
+<div class="containerc">
+  <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalc">
+    Nova categoria
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModalc">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Adicione uma nova categoria</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="container">
+            <form action="/CategoriaPrato" method="POST" class="was-validated">
+            {{ csrf_field() }}
+              <div class="form-group">
+                <label for="uname">Nome:</label>
+                <input type="text" class="form-control" id="uname" placeholder="Enter username" name="nomeCat" required>
+              </div>
+          </div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
 
 <div class="card">
   <img src="https://static-images.ifood.com.br/image/upload/f_auto,t_medium/pratos/712f2c3e-43ed-42b0-801b-38567e20c9bf/201910111339_gPTF_i.jpg" alt="W3Schools.com">

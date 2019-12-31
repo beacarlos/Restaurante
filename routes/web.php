@@ -32,3 +32,4 @@ Route::get('/pedido', function () {
 });
 
 Route::post('/cardapio', 'CardapioController@store');
+Route::post('/CategoriaPrato', 'categoriaController@store');

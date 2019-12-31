@@ -13,7 +13,7 @@ class CreateCategoriaPratoTable extends Migration
     */
     public function up()
     {
-        Schema::create('categoria_prato', function (Blueprint $table) {
+        Schema::create('categoria_pratos', function (Blueprint $table) {
             $table->increments('categoria_prato_id');
             $table->string('descricao', 255)->nullable();
             $table->timestamp('data_de_criacao')->default(DB::raw('CURRENT_TIMESTAMP'));
@@ -28,6 +28,6 @@ class CreateCategoriaPratoTable extends Migration
     */
     public function down()
     {
-        Schema::dropIfExists('categoria_prato');
+        Schema::dropIfExists('categoria_pratos');
     }
 }
