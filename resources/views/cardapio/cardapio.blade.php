@@ -48,6 +48,7 @@
           <div class="modal-body">
             <div class="container">
               <form action="/cardapio/novoprato" method="POST" class="was-validated">
+              {{ csrf_field() }}
                 <div class="form-group">
                   <label for="uname">Nome:</label>
                   <input type="text" class="form-control" id="uname" placeholder="Enter username" name="name" required>
@@ -70,7 +71,8 @@
                   <textarea class="form-control" rows="5" id="comment" required name="descricao"></textarea>
                 </div>
                 <div>
-                  <input type="checkbox" data-toggle="toggle" data-on="Ativo" data-off="Desativado"  data-width="110" name="status">
+                  <input type="checkbox" name="status" data-toggle="toggle" data-on="Ativado" data-off="Desativado"  data-width="110">
+                  
                 </div>
             </div>
           </div>

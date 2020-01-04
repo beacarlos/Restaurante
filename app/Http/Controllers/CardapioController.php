@@ -17,10 +17,8 @@ class CardapioController extends Controller
      */
     public function index()
     {
-        //$consultCatPrato = DB::select('SELECT * FROM categoria_pratos');
         $categs = CategoriaPrato::all();
         return view('cardapio.cardapio', compact('categs'));
-        //return view("cardapio.cardapio", compact('consultCatPrato'));
     }
 
     /**
@@ -30,7 +28,7 @@ class CardapioController extends Controller
      */
     public function create()
     {
-        return view('cardapio.novoprato');
+        return view('cardapio.cardapio');
     }
 
     /**
@@ -42,10 +40,13 @@ class CardapioController extends Controller
     public function store(Request $request)
     {
         $prat = new Prato();
-        $prat->nome = $request->input('uname');
+        $prat->nome = $request->input('name');
         $prat->preco = $request->input('price-number');
+        $prat->categoria_prato_fk=$request->input('descricaoCat');
         $prat->descricao = $request->input('descricao');
+        //$prat->ativo = $request->input('status');
         $prat->save();
+        return redirect('/cardapio');
 
     }
 

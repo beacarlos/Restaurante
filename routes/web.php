@@ -26,7 +26,7 @@ Route::get('/mesa', function () {
 
 Route::get('/cardapio', 'CardapioController@index');
 Route::get('/cardapio/novoprato', 'CardapioController@index');
-Route::get('/cardapio/novoprato', 'CardapioController@create');
+Route::post('/cardapio/novoprato', 'CardapioController@store');
 
 Route::get('/pedido', function () {
     return view('pedido.pedido');
