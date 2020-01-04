@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
 use App\Prato;
+use App\CategoriaPrato;
 
 class CardapioController extends Controller
 {
@@ -14,7 +17,10 @@ class CardapioController extends Controller
      */
     public function index()
     {
-        return view('cardapio.cardapio');
+        //$consultCatPrato = DB::select('SELECT * FROM categoria_pratos');
+        $categs = CategoriaPrato::all();
+        return view('cardapio.cardapio', compact('categs'));
+        //return view("cardapio.cardapio", compact('consultCatPrato'));
     }
 
     /**
@@ -39,8 +45,6 @@ class CardapioController extends Controller
         $prat->nome = $request->input('uname');
         $prat->preco = $request->input('price-number');
         $prat->descricao = $request->input('descricao');
-        
-
         $prat->save();
 
     }

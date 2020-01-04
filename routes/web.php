@@ -25,11 +25,15 @@ Route::get('/mesa', function () {
 });
 
 Route::get('/cardapio', 'CardapioController@index');
-Route::get('/cardapio/novo', 'CardapioController@create');
+Route::get('/cardapio/novoprato', 'CardapioController@index');
+Route::get('/cardapio/novoprato', 'CardapioController@create');
 
 Route::get('/pedido', function () {
     return view('pedido.pedido');
 });
 
+
 Route::post('/cardapio', 'CardapioController@store');
 Route::post('/CategoriaPrato', 'categoriaController@store');
+//Route::post('/CategoriaPrato', 'categoriaController@index');
+Route::get('/cardapio/categoria/excluir/{id}', 'categoriaController@destroy');

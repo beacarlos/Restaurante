@@ -14,7 +14,8 @@ class categoriaController extends Controller
      */
     public function index()
     {
-        //
+        $categs = CategoriaPrato::all();
+        return view('cardapio.cardapio', compact('categs'));
     }
 
     /**
@@ -36,8 +37,9 @@ class categoriaController extends Controller
     public function store(Request $request)
     {
         $cat = new CategoriaPrato();
-        $cat->descricao = $request->input('descricao');
+        $cat->descricao = $request->input('nomeCat');
         $cat->save();
+        return redirect('/cardapio');
     }
 
     /**
@@ -82,6 +84,10 @@ class categoriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categs = CategoriaPrato::find($id);
+        if(isset($categs)){
+            $categs->delete();
+        }
+        return redirect('/cardapio');
     }
 }
