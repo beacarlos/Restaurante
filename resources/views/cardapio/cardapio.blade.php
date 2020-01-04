@@ -169,4 +169,23 @@
     </div>
   </div>
 </div>
+<div class="container">
+  <div class="card">
+  @foreach($prat as $pratos)
+      <img src="https://static-images.ifood.com.br/image/upload/f_auto,t_medium/pratos/712f2c3e-43ed-42b0-801b-38567e20c9bf/201910111339_gPTF_i.jpg" alt="W3Schools.com">
+      <div class="container">
+        <h4><b>{{$pratos->nome}}</b></h4>
+        <p>{{$pratos->descricao}}</p> 
+      </div>
+      <div class="disponivel">
+        <!--<button type="button" class="btn btn-success" id="status">Ativo</button>-->
+        <!--<button type="button" class="btn btn-warning" id="valor" disabled>Valor: R$ 48,90</button>-->
+      </div>
+      <div class="preco">
+        <h6 id="valor" class="btn btn-warning">Valor: R$ {{$pratos->preco}}</h6>
+      </div>
+    </div>
+  @endforeach
+  </div>
+</div>
 @endsection

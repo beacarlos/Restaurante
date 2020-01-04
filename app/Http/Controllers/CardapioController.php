@@ -18,7 +18,9 @@ class CardapioController extends Controller
     public function index()
     {
         $categs = CategoriaPrato::all();
-        return view('cardapio.cardapio', compact('categs'));
+        $prat = Prato::all();
+        return view('cardapio.cardapio', compact('categs', 'prat'));
+        
     }
 
     /**
@@ -41,7 +43,7 @@ class CardapioController extends Controller
     {
         $prat = new Prato();
         $prat->nome = $request->input('name');
-        $prat->preco = $request->input('price-number');
+        $prat->preco = $request->input('price');
         $prat->categoria_prato_fk=$request->input('descricaoCat');
         $prat->descricao = $request->input('descricao');
         //$prat->ativo = $request->input('status');
