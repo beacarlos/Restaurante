@@ -168,7 +168,7 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-              <a href="#" class="nav-link" style="color: white !important;">
+              <a href="{{route('pedidos.index')}}" class="nav-link" style="color: white !important;">
                 <img class="nav-icon" src="{{ asset('img/lista.png') }}" alt="">
                 <p>
                   Pedidos
@@ -177,7 +177,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" style="color: white !important;">
+              <a href="{{route('mesa.index')}}" class="nav-link" style="color: white !important;">
                 <i class="nav-icon fa fa-th"></i>
                 <p>
                   Mesas
@@ -186,7 +186,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="/cardapio" class="nav-link" style="color: white !important;">
+              <a href="{{route('cardapio.index')}}" class="nav-link" style="color: white !important;">
                 <img class="nav-icon" src="{{ asset('img/restaurante.png') }}">
                 <p>
                   Cardápio
@@ -195,7 +195,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" style="color: white !important;">
+            <a href="{{route('genrencia.index')}}" class="nav-link" style="color: white !important;">
                 <img class="nav-icon" src="{{ asset('img/maleta.png') }}">
                 <p>
                   Gerente
@@ -261,7 +261,7 @@
     <script src="{{ asset('dist/js/pages/dashboard3.js') }} "></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     
-    
+    @yield('js')
   </body>
   </html>
   

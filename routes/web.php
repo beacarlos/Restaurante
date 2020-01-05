@@ -10,11 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/
 
 Route::get('/', function () {
     return view('Layouts.dashboard');
@@ -22,15 +17,22 @@ Route::get('/', function () {
 
 Route::get('/mesa', function () {
     return view('mesa.mesa');
+})->name('mesa.index');
+
+Route::group(['prefix' => 'cardapio'], function () {
+    Route::get('/', 'CardapioController@index')->name('cardapio.index');
+    Route::get('/novoprato', 'CardapioController@index')->name('cardapio.novoprato');
+    Route::post('/novoprato', 'CardapioController@store')->name('cardapio.store');
+    // Route::post('/', 'CardapioController@store');
+    Route::get('/categoria/excluir/{id}', 'categoriaController@destroy')->name('cardapio.destroy');
 });
 
-Route::get('/cardapio', 'CardapioController@index');
-Route::get('/cardapio/novoprato', 'CardapioController@index');
-Route::post('/cardapio/novoprato', 'CardapioController@store');
+Route::post('/CategoriaPrato', 'categoriaController@store');
+//Route::post('/CategoriaPrato', 'categoriaController@index');  
 
 Route::get('/pedido', function () {
     return view('pedido.pedido');
-});
+})->name('pedidos.index');
 
 
 Route::post('/cardapio', 'CardapioController@store');
@@ -38,3 +40,8 @@ Route::post('/CategoriaPrato', 'categoriaController@store');
 //Route::post('/CategoriaPrato', 'categoriaController@index');
 Route::get('/cardapio/categoria/excluir/{id}', 'categoriaController@destroy');
 Route::get('/cardapio/categoria/editar/{id}', 'categoriaController@edit');
+
+//Rota gerencia
+Route::group(['prefix' => 'gerencia'], function () {
+    Route::get('/', 'GerenteController@index')->name('genrencia.index');
+});
