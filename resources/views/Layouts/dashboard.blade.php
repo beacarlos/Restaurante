@@ -261,7 +261,7 @@
     <script src="{{ asset('dist/js/pages/dashboard3.js') }} "></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     
-    
+    @yield('js')
   </body>
   </html>
   
