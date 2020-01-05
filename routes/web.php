@@ -37,3 +37,4 @@ Route::post('/cardapio', 'CardapioController@store');
 Route::post('/CategoriaPrato', 'categoriaController@store');
 //Route::post('/CategoriaPrato', 'categoriaController@index');
 Route::get('/cardapio/categoria/excluir/{id}', 'categoriaController@destroy');
+Route::get('/cardapio/categoria/editar/{id}', 'categoriaController@edit');

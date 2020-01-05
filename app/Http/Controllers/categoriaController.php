@@ -61,7 +61,11 @@ class categoriaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cat = CategoriaPrato::find($id);
+        if(isset($cat)){
+            return view('editarcategoria', compact('cat'));
+        }
+        return redirect('/cardapio');
     }
 
     /**
