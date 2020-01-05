@@ -17,22 +17,24 @@ Route::get('/', function () {
 
 Route::get('/mesa', function () {
     return view('mesa.mesa');
-});
+})->name('mesa.index');
 
-Route::get('/cardapio', 'CardapioController@index');
-Route::get('/cardapio/novoprato', 'CardapioController@index');
-Route::post('/cardapio/novoprato', 'CardapioController@store');
-Route::post('/cardapio', 'CardapioController@store');
-Route::get('/cardapio/categoria/excluir/{id}', 'categoriaController@destroy');
+Route::group(['prefix' => 'cardapio'], function () {
+    Route::get('/', 'CardapioController@index')->name('cardapio.index');
+    Route::get('/novoprato', 'CardapioController@index')->name('cardapio.novoprato');
+    Route::post('/novoprato', 'CardapioController@store')->name('cardapio.store');
+    // Route::post('/', 'CardapioController@store');
+    Route::get('/categoria/excluir/{id}', 'categoriaController@destroy')->name('cardapio.destroy');
+});
 
 Route::post('/CategoriaPrato', 'categoriaController@store');
 //Route::post('/CategoriaPrato', 'categoriaController@index');  
 
 Route::get('/pedido', function () {
     return view('pedido.pedido');
-});
+})->name('pedidos.index');
 
 //Rota gerencia
 Route::group(['prefix' => 'gerencia'], function () {
-    Route::get('/', 'GerenteController@index');
+    Route::get('/', 'GerenteController@index')->name('genrencia.index');
 });
