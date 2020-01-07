@@ -37,8 +37,13 @@
     ::-webkit-scrollbar-thumb {
       background: #dad7d7;
     }
+    
+    .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+      color: #fff;
+      background-color: #6AC5BC !important;
+    }
   </style>
-  
+  @yield('css')
 </head>
 
 <body class="hold-transition sidebar-mini" style="background-color: white !important;">
@@ -168,8 +173,8 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-              <a href="{{route('pedidos.index')}}" class="nav-link" style="color: white !important;">
-                <img class="nav-icon" src="{{ asset('img/lista.png') }}" alt="">
+              <a href="{{route('pedidos.index')}}" class="nav-link pedidos" style="color: white !important;">
+                <i class="fas fa-clipboard-list nav-icon"></i>
                 <p>
                   Pedidos
                   <!-- <span class="right badge badge-danger">New</span> -->
@@ -187,7 +192,7 @@
             </li>
             <li class="nav-item">
               <a href="{{route('cardapio.index')}}" class="nav-link" style="color: white !important;">
-                <img class="nav-icon" src="{{ asset('img/restaurante.png') }}">
+                <i class="fas fa-utensils nav-icon"></i>
                 <p>
                   Cardápio
                   <!-- <span class="right badge badge-danger">New</span> -->
@@ -195,13 +200,37 @@
               </a>
             </li>
             <li class="nav-item">
-            <a href="{{route('genrencia.index')}}" class="nav-link" style="color: white !important;">
-                <img class="nav-icon" src="{{ asset('img/maleta.png') }}">
+              <a href="{{route('genrencia.index')}}" class="nav-link" style="color: white !important;">
+                <i class="fas fa-suitcase nav-icon"></i>
                 <p>
                   Gerente
                   <!-- <span class="right badge badge-danger">New</span> -->
                 </p>
               </a>
+            </li>
+            
+            <li class="nav-item has-treeview menu-open">
+              <a href="#" class="nav-link" style="color: white !important;">
+                <i class="fas fa-plus-square nav-icon"></i>
+                <p>
+                  Cadastros
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('pessoa.listagem.view')}}" class="nav-link pessoas" style="color: white !important;">
+                    <i class="far fa-user nav-icon"></i>
+                    <p>Pessoas</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="./index2.html" class="nav-link" style="color: white !important;">
+                    <i class="nav-icon fa fa-th"></i>
+                    <p>Mesas</p>
+                  </a>
+                </li>
+              </ul>
             </li>
           </nav>
           <!-- /.sidebar-menu -->

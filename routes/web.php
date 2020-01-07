@@ -34,7 +34,20 @@ Route::get('/pedido', function () {
     return view('pedido.pedido');
 })->name('pedidos.index');
 
-//Rota gerencia
+/*
+** Grupo de rotas relacionado a gerencia.
+*/
 Route::group(['prefix' => 'gerencia'], function () {
+    //Rota de view Gerencia.
     Route::get('/', 'GerenteController@index')->name('genrencia.index');
+});
+
+/*
+** Grupo de rotas relacionada a pessoas.
+*/
+Route::group(['prefix' => 'pessoa'], function () {
+    //Rota da view Pessoa Listagem.
+    Route::get('/listagem', 'PessoaController@indexListagem')->name('pessoa.listagem.view');
+    //Rota da view Pessoa.
+    Route::get('/cadastro', 'PessoaController@index')->name('pessoa.view');
 });
