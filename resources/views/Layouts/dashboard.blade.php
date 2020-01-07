@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
   
   <title>Restaurante - Delicias de Delicias</title>
   
@@ -173,6 +175,15 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
+              <a href="{{route('dashboard.view')}}" class="nav-link pagina_inicial" style="color: white !important;">
+                <i class="fas fa-chart-bar nav-icon"></i>
+                <p>
+                  Página inicial
+                  <!-- <span class="right badge badge-danger">New</span> -->
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="{{route('pedidos.index')}}" class="nav-link pedidos" style="color: white !important;">
                 <i class="fas fa-clipboard-list nav-icon"></i>
                 <p>
@@ -182,7 +193,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{route('mesa.index')}}" class="nav-link" style="color: white !important;">
+              <a href="{{route('mesa.index')}}" class="nav-link mesas" style="color: white !important;">
                 <i class="nav-icon fa fa-th"></i>
                 <p>
                   Mesas
@@ -191,7 +202,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{route('cardapio.index')}}" class="nav-link" style="color: white !important;">
+              <a href="{{route('cardapio.index')}}" class="nav-link cardapio" style="color: white !important;">
                 <i class="fas fa-utensils nav-icon"></i>
                 <p>
                   Cardápio
@@ -200,7 +211,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{route('genrencia.index')}}" class="nav-link" style="color: white !important;">
+              <a href="{{route('genrencia.index')}}" class="nav-link gerente" style="color: white !important;">
                 <i class="fas fa-suitcase nav-icon"></i>
                 <p>
                   Gerente
@@ -209,7 +220,7 @@
               </a>
             </li>
             
-            <li class="nav-item has-treeview menu-open">
+            <li class="nav-item has-treeview item-cadastro">
               <a href="#" class="nav-link" style="color: white !important;">
                 <i class="fas fa-plus-square nav-icon"></i>
                 <p>

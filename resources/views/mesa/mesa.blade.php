@@ -7,3 +7,11 @@
     </div>
 </div>
 @endsection
+
+@section('js')
+    <script>
+        $(document).ready(function () {
+            $(".mesas").addClass("active");
+        });
+    </script>
+@endsection

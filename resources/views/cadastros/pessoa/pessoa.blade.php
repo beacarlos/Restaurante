@@ -19,7 +19,7 @@
         text-decoration: none;
         padding: 10px;
     }
-
+    
 </style>
 @endsection
 
@@ -40,7 +40,7 @@
                         <div class="imgUp">
                             <img src="{{ asset('img/user.png') }}" class="imagePreview">
                             <label class="btn btn-primary btn-upload">
-                                Selecione uma foto.<input type="file" class="uploadFile img" id="uploadFile" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                Selecione uma foto.<input type="file" class="uploadFile img" id="uploadFile" name="uploadFile" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
                             </label>
                         </div>
                     </div>
@@ -49,36 +49,36 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="nome">Nome</label>
-                            <input type="text" class="form-control" id="nome" placeholder="Nome completo.">
+                            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome completo.">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="cpf">CPF</label>
-                            <input type="text" class="form-control" id="cpf" placeholder="CPF.">
+                            <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF.">
                         </div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Email.">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email.">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="senha">Senha</label>
-                            <input type="password" min="3" max="8" class="form-control" id="senha" placeholder="Senha.">
+                            <input type="password" min="3" max="8" name="password" class="form-control" id="senha" placeholder="Senha.">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="telefone">Telefone</label>
-                            <input type="text" class="form-control" id="telefone" placeholder="Telefone.">
+                            <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone.">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="acesso">Nivel de acesso: </label>
-                            <select id="acesso" class="form-control">
+                            <select id="acesso" class="form-control" name="nivel_de_acesso">
                                 <option selected>Escolher...</option>
-                                <option>Garçom</option>
-                                <option>Gerencia</option>
-                                <option>Cozinha</option>
+                                <option value="1">Garçom</option>
+                                <option value="2">Gerencia</option>
+                                <option value="3">Cozinha</option>
                             </select>
                         </div>
                     </div>
@@ -95,6 +95,18 @@
 
 @section('js')
 <script>
+    $(document).ready(function () {
+        console.clear();
+        $(".pessoas").addClass("active");
+        $(".item-cadastro").addClass("menu-open");
+    });
+    
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    
     //Eventos de preview de imagens.
     $("#uploadFile").change(function () {
         const file = $(this)[0].files[0]
@@ -110,6 +122,26 @@
         else{
             console.log("não é imagem");
         }
+    });
+    
+    $("form").submit(function (e) { 
+        e.preventDefault();
+        var formData = new FormData(this);
+        $.ajax({
+            type: "post",
+            url: "/pessoa/cadastrar",
+            data: formData,
+            contentType: false,
+            cache: false,
+            async: false,
+            processData: false,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (response) {
+                
+            }
+        });
     });
     
 </script>

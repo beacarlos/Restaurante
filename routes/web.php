@@ -12,8 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('Layouts.dashboard');
-});
+    return view('dashboard.dashboard');
+})->name('dashboard.view');
 
 Route::get('/mesa', function () {
     return view('mesa.mesa');
@@ -50,4 +50,5 @@ Route::group(['prefix' => 'pessoa'], function () {
     Route::get('/listagem', 'PessoaController@indexListagem')->name('pessoa.listagem.view');
     //Rota da view Pessoa.
     Route::get('/cadastro', 'PessoaController@index')->name('pessoa.view');
+    Route::post('/cadastrar', 'PessoaController@cadastrarPessoa')->name('pessoa.cadastro');
 });

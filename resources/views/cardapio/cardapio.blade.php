@@ -220,3 +220,11 @@
 </div>
 </div>
 @endsection
+
+@section('js')
+    <script>
+        $(document).ready(function () {
+            $(".cardapio").addClass("active");
+        });
+    </script>
+@endsection
