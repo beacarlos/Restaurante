@@ -15,7 +15,7 @@ class CreateCategoriaPratoTable extends Migration
     {
         Schema::create('categoria_pratos', function (Blueprint $table) {
             $table->increments('categoria_prato_id');
-            $table->string('descricao', 255)->nullable();
+            $table->string('descricao', 255)->nullable(false);
             $table->timestamp('data_de_criacao')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('ultima_atualizacao')->default(DB::raw('CURRENT_TIMESTAMP'));
         });

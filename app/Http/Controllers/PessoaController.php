@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\Pessoa;
 
 class PessoaController extends Controller
 {
@@ -34,16 +36,27 @@ class PessoaController extends Controller
     */
     public function cadastrarPessoa(Request $request)
     {
+        $cpf = trim($request->cpf);
+        $cpf = str_replace(".", "", $cpf);
+        $cpf = str_replace(",", "", $cpf);
+        $cpf = str_replace("-", "", $cpf);
+        $cpf = str_replace("/", "", $cpf);
+        
         if ($request->hasFile('uploadFile')) {
-            foreach ($request->uploadFile as $arquivo) {
-                $image = $arquivo;
-                $name = $request->nome.".".$imagem->getClientOriginalExtension();
-                $destinationPath = public_path('img_perfil');
-                $image->move($destinationPath, $name);
-                // if ($image->move($destinationPath, $name)) {
-                //     return response()->json("hdjjghd");
-                // }
-            }
+            $imagem = $request->uploadFile;
+            $name = $cpf.".".$imagem->getClientOriginalExtension();
+            $destinationPath = public_path('img_perfil');
+            $imagem->move($destinationPath, $name);
+            
+            $pessoa = new Pessoa;
+            $pessoa->nome = $request->nome;
+            $pessoa->telefone = $request->telefone;
+            $pessoa->cpf = $request->cpf;
+            $pessoa->email = $request->email;
+            $pessoa->senha = Hash::make($request->password);
+            $pessoa->pessoa_tipo_fk = $request->nivel_de_acesso;
+            $pessoa->save();
+            
         }
     }
     

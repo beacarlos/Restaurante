@@ -144,5 +144,15 @@
         });
     });
     
+    // function select_nivel_de_acesso() { 
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "url",
+    //         success: function (response) {
+                
+    //         }
+    //     });
+    // }
+    
 </script>
 @endsection

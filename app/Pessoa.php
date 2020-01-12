@@ -30,7 +30,7 @@ class Pessoa extends Model
     * Coluna last_update timestamp modificada.
     * @var string
     */
-    const UPDATED_AT = 'ultima_atualizcao';
+    const UPDATED_AT = 'ultima_atualizacao';
     
     /**
     * A tabela mysql associada ao model.

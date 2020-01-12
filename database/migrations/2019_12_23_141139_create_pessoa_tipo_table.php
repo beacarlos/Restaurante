@@ -15,7 +15,7 @@ class CreatePessoaTipoTable extends Migration
     {
         Schema::create('pessoa_tipo', function (Blueprint $table) {
             $table->increments('pessoa_tipo_id');
-            $table->string('descricao', 255)->nullable();
+            $table->string('descricao', 255)->nullable(false);
             $table->timestamp('data_de_criacao')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('ultima_atualizacao')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
