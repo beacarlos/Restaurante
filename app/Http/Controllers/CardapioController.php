@@ -92,8 +92,11 @@ class CardapioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id){
+        $prato = Prato::find($id);
+        if(isset($prato)){
+            $prato->delete();
+        }
+        return redirect('/cardapio');
     }
 }
