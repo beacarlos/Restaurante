@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\CategoriaPrato;
 
 class categoriaController extends Controller
@@ -88,10 +89,15 @@ class categoriaController extends Controller
      */
     public function destroy($id)
     {
+        $message = '';
         $categs = CategoriaPrato::find($id);
-        if(isset($categs)){
+        $exist =  DB::select('SELECT * FROM pratos WHERE categoria_prato_fk = ?', [$id]);
+        if(isset($categs) && count($exist)==0){
             $categs->delete();
+        }else{
+            $message = True;
         }
-        return redirect('/cardapio');
+        return redirect('/cardapio')->with(compact('message'));
     }
+    
 }

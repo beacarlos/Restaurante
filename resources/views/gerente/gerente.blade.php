@@ -3,7 +3,7 @@
 @section('body')
 <div class="content">
     <div class="container-fluid">
-        <h4 style="font-weight: bold; color: #008080;"><i class="fas fa-tasks"></i> Gerência</h4>
+        <h4 style="font-weight: bold; color: #008080;"><i class="fas fa-suitcase nav-icon"></i></i> Gerência</h4>
         <div class="row d-flex" style="border-bottom: 1px black solid; margin-right: 2%; "></div>
         <p style="font-size: 12px; font-weight: bold; color: dimgrey;">Tela onde podemos ver o fluxo das comandas e ver uma comanda especifica.</p>
         <div class="row d-flex justify-content-end">
@@ -60,6 +60,9 @@
 @section('js')
 <script>
     $(document).ready(function () {
+        $(document).ready(function () {
+            $(".gerente").addClass("active");
+        });
         console.clear();
         $("#div_fluxo").hide();
     });

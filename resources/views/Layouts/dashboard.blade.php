@@ -4,21 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
   
   <title>Restaurante - Delicias de Delicias</title>
   
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css')}} ">
   <!-- IonIcons -->
-  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  {{-- <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> --}}
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
   
   <link rel="stylesheet" href="{{ asset('dist/css/sidebar.css') }}">
   <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  {{-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> --}}
   <!--Para toggle do status do prato -->
-  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  {{-- <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet"> --}}
   <style>
     /* body {
       overflow: hidden;
@@ -37,8 +39,13 @@
     ::-webkit-scrollbar-thumb {
       background: #dad7d7;
     }
+    
+    .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+      color: #fff;
+      background-color: #6AC5BC !important;
+    }
   </style>
-  
+  @yield('css')
 </head>
 
 <body class="hold-transition sidebar-mini" style="background-color: white !important;">
@@ -168,8 +175,17 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-              <a href="{{route('pedidos.index')}}" class="nav-link" style="color: white !important;">
-                <img class="nav-icon" src="{{ asset('img/lista.png') }}" alt="">
+              <a href="{{route('dashboard.view')}}" class="nav-link pagina_inicial" style="color: white !important;">
+                <i class="fas fa-chart-bar nav-icon"></i>
+                <p>
+                  Página inicial
+                  <!-- <span class="right badge badge-danger">New</span> -->
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('pedidos.index')}}" class="nav-link pedidos" style="color: white !important;">
+                <i class="fas fa-clipboard-list nav-icon"></i>
                 <p>
                   Pedidos
                   <!-- <span class="right badge badge-danger">New</span> -->
@@ -177,7 +193,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{route('mesa.index')}}" class="nav-link" style="color: white !important;">
+              <a href="{{route('mesa.index')}}" class="nav-link mesas" style="color: white !important;">
                 <i class="nav-icon fa fa-th"></i>
                 <p>
                   Mesas
@@ -186,8 +202,8 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{route('cardapio.index')}}" class="nav-link" style="color: white !important;">
-                <img class="nav-icon" src="{{ asset('img/restaurante.png') }}">
+              <a href="{{route('cardapio.index')}}" class="nav-link cardapio" style="color: white !important;">
+                <i class="fas fa-utensils nav-icon"></i>
                 <p>
                   Cardápio
                   <!-- <span class="right badge badge-danger">New</span> -->
@@ -195,13 +211,37 @@
               </a>
             </li>
             <li class="nav-item">
-            <a href="{{route('genrencia.index')}}" class="nav-link" style="color: white !important;">
-                <img class="nav-icon" src="{{ asset('img/maleta.png') }}">
+              <a href="{{route('genrencia.index')}}" class="nav-link gerente" style="color: white !important;">
+                <i class="fas fa-suitcase nav-icon"></i>
                 <p>
                   Gerente
                   <!-- <span class="right badge badge-danger">New</span> -->
                 </p>
               </a>
+            </li>
+            
+            <li class="nav-item has-treeview item-cadastro">
+              <a href="#" class="nav-link" style="color: white !important;">
+                <i class="fas fa-plus-square nav-icon"></i>
+                <p>
+                  Cadastros
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('pessoa.listagem.view')}}" class="nav-link pessoas" style="color: white !important;">
+                    <i class="far fa-user nav-icon"></i>
+                    <p>Pessoas</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="./index2.html" class="nav-link" style="color: white !important;">
+                    <i class="nav-icon fa fa-th"></i>
+                    <p>Mesas</p>
+                  </a>
+                </li>
+              </ul>
             </li>
           </nav>
           <!-- /.sidebar-menu -->
@@ -259,7 +299,7 @@
     <script src="{{ asset('plugins/chart.js/Chart.min.js') }} "></script>
     <script src="{{ asset('dist/js/demo.js') }} "></script>
     <script src="{{ asset('dist/js/pages/dashboard3.js') }} "></script>
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    {{-- <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> --}}
     
     @yield('js')
   </body>

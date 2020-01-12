@@ -22,7 +22,6 @@
   }
   
 </style>
-
 <div class="containerGG">
   <div class="container" style="margin-bottom: 1rem;">
     <!-- Button to Open the Modal -->
@@ -120,13 +119,19 @@
                   </tr>
                 </thead>
                 <tbody>
+             
+
                   @foreach($categs as $cat)
                   <tr>
                     <td>{{$cat->categoria_prato_id}}</td>
                     <td>{{$cat->descricao}}</td>
                     <td>
                       <a href="/cardapio/categoria/editar/{{$cat->categoria_prato_id}}" class="btn btn-primary">Editar</a>
+                      @if (isset($message))
+                      <button onclick="erroDelCat()" class="btn btn-danger">APAGAR</a>
+                      @else
                       <a href="/cardapio/categoria/excluir/{{$cat->categoria_prato_id}}" class="btn btn-danger">Excluir</a>
+                      @endif
                     </td>
                   </tr>
                   @endforeach
@@ -163,38 +168,6 @@
           </div>
         </div>
       </div>
-      <div class="col-4">
-        <div class="card">
-          <img src="https://static-images.ifood.com.br/image/upload/f_auto,t_medium/pratos/712f2c3e-43ed-42b0-801b-38567e20c9bf/201910111339_gPTF_i.jpg" alt="W3Schools.com">
-          <div class="container">
-            <h4 class="text-center"><b>Mistão para 03 pessoas</b></h4>
-            <p>Mistao para tres pessos,(frango assado, linguiça, carne bovina, uma porçao de baiao a moda, uma porçao de batata frita, vinagrete e farofa.)</p> 
-          </div>
-          <div class="disponivel">
-            <!--<button type="button" class="btn btn-success" id="status">Ativo</button>-->
-            <!--<button type="button" class="btn btn-warning" id="valor" disabled>Valor: R$ 48,90</button>-->
-          </div>
-          <div class="preco ">
-            <h6 id="valor" class="btn btn-warning">Valor: R$ 48,90</h6>
-          </div>
-        </div>
-      </div>
-      <div class="col-4" style="">
-        <div class="card">
-          <img src="https://static-images.ifood.com.br/image/upload/f_auto,t_medium/pratos/712f2c3e-43ed-42b0-801b-38567e20c9bf/201910111339_gPTF_i.jpg" alt="W3Schools.com">
-          <div class="container" >
-            <h4 class="text-center"><b>Mistão para 03 pessoas</b></h4>
-            <p>Mistao para tres pessos,(frango assado, linguiça, carne bovina, uma porçao de baiao a moda, uma porçao de batata frita, vinagrete e farofa.)</p> 
-          </div>
-          <div class="disponivel">
-            <!--<button type="button" class="btn btn-success" id="status">Ativo</button>-->
-            <!--<button type="button" class="btn btn-warning" id="valor" disabled>Valor: R$ 48,90</button>-->
-          </div>
-          <div class="preco align-content-center" style="">
-            <h6 id="valor" class="btn btn-warning">Valor: R$ 48,90</h6>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -218,4 +191,15 @@
   @endforeach
 </div>
 </div>
+@endsection
+
+@section('js')
+    <script>
+        $(document).ready(function () {
+            $(".cardapio").addClass("active");
+        });
+        function erroDelCat() {
+          alert("Hello! I am an alert box!");
+        }
+    </script>
 @endsection
