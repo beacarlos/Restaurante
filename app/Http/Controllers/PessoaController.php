@@ -23,11 +23,18 @@ class PessoaController extends Controller
     {
         //Um Select Join em pessoa.
         $pessoa = Pessoa::join('pessoa_tipo', 'pessoas.pessoa_tipo_fk', '=', 'pessoa_tipo.pessoa_tipo_id')
-                        ->select('pessoas.nome', 'pessoas.telefone', 'pessoas.email', 'pessoa_tipo.descricao as nivel_de_acesso')
-                        ->get();
-
-        //Criando dos botões via DataTable.
-        return DataTables::of($pessoa)->make(true);
+        ->select('pessoas.pessoa_id', 'pessoas.imagem', 'pessoas.nome', 'pessoas.telefone', 'pessoas.email', 'pessoa_tipo.descricao as nivel_de_acesso')
+        ->get();
+        
+        return DataTables::of($pessoa)
+        ->addColumn('action', function($pessoa){
+            $button = '<button type="button" name="edit" id="'.$pessoa->pessoa_id.'" class="edit btn btn-primary btn-sm"><i class="fas fa-edit"></i></button>';
+            $button .= '&nbsp;&nbsp;';
+            $button .= '<button type="button" name="delete" id="'.$pessoa->pessoa_id.'" class="delete btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>';
+            return $button;
+        })
+        ->rawColumns(['action'])
+        ->make(true);
     }
     
     /**
@@ -67,6 +74,7 @@ class PessoaController extends Controller
             $pessoa->cpf = $request->cpf;
             $pessoa->email = $request->email;
             $pessoa->senha = Hash::make($request->password);
+            $pessoa->imagem = $name;
             $pessoa->pessoa_tipo_fk = $request->nivel_de_acesso;
             $pessoa->save();
         }

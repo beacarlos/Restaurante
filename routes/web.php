@@ -49,7 +49,7 @@ Route::group(['prefix' => 'gerencia'], function () {
 Route::group(['prefix' => 'pessoa'], function () {
     //Rota da view Pessoa Listagem.
     Route::get('/listagem', 'PessoaController@indexListagem')->name('pessoa.listagem.view');
-    Route::get('/listagem/view', 'PessoaController@mostrarUsuarios');
+    Route::get('/listagem/view', 'PessoaController@mostrarUsuarios')->name('pessoa.listagem.datatables');
     //Rota da view Pessoa.
     Route::get('/cadastro', 'PessoaController@index')->name('pessoa.view');
     Route::post('/cadastrar', 'PessoaController@cadastrarPessoa')->name('pessoa.cadastro');

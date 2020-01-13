@@ -129,7 +129,7 @@
         var formData = new FormData(this);
         $.ajax({
             type: "post",
-            url: "/pessoa/cadastrar",
+            url: "{{route('pessoa.cadastro')}}",
             data: formData,
             contentType: false,
             cache: false,
@@ -139,7 +139,8 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (response) {
-                
+                $('form')[0].reset();
+                $('.imagePreview').attr('src', "{{ asset('img/user.png') }}");
             }
         });
     });

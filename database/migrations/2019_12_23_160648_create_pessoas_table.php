@@ -20,6 +20,7 @@ class CreatePessoasTable extends Migration
             $table->string('cpf', 25)->unique()->nullable(false);            
             $table->string('email', 255)->unique()->nullable(false);            
             $table->string('senha', 60)->unique()->nullable(false);  
+            $table->string('imagem', 255)->unique()->nullable(false);  
             $table->string('remember_token', 100)->nullable();  
             $table->integer('pessoa_tipo_fk')->unsigned();
             $table->foreign('pessoa_tipo_fk')->references('pessoa_tipo_id')->on('pessoa_tipo');        
