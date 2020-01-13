@@ -9,9 +9,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-use App\Http\Controllers\CardapioController;
-
 Route::get('/', function () {
     return view('dashboard.dashboard');
 })->name('dashboard.view');
@@ -28,11 +25,15 @@ Route::group(['prefix' => 'cardapio'], function () {
     Route::get('/categoria/excluir/{id}', 'categoriaController@destroy')->name('cardapio.destroy');
     Route::get('/prato/excluir/{id}', 'CardapioController@destroy');
 });
+
 Route::post('/CategoriaPrato', 'categoriaController@store');
 //Route::post('/CategoriaPrato', 'categoriaController@index');  
+
 Route::get('/pedido', function () {
     return view('pedido.pedido');
 })->name('pedidos.index');
+
+
 /*
 ** Grupo de rotas relacionado a gerencia.
 */
@@ -40,12 +41,15 @@ Route::group(['prefix' => 'gerencia'], function () {
     //Rota de view Gerencia.
     Route::get('/', 'GerenteController@index')->name('genrencia.index');
 });
+
+
 /*
 ** Grupo de rotas relacionada a pessoas.
 */
 Route::group(['prefix' => 'pessoa'], function () {
     //Rota da view Pessoa Listagem.
     Route::get('/listagem', 'PessoaController@indexListagem')->name('pessoa.listagem.view');
+    Route::get('/listagem/view', 'PessoaController@mostrarUsuarios');
     //Rota da view Pessoa.
     Route::get('/cadastro', 'PessoaController@index')->name('pessoa.view');
     Route::post('/cadastrar', 'PessoaController@cadastrarPessoa')->name('pessoa.cadastro');

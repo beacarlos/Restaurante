@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Yajra\DataTables\Facades\DataTables;
 use App\Pessoa;
 
 class PessoaController extends Controller
@@ -16,6 +17,17 @@ class PessoaController extends Controller
     public function indexListagem ()
     {
         return view('cadastros.pessoa.pessoa-listagem');
+    }
+    
+    public function mostrarUsuarios()
+    {
+        //Um Select Join em pessoa.
+        $pessoa = Pessoa::join('pessoa_tipo', 'pessoas.pessoa_tipo_fk', '=', 'pessoa_tipo.pessoa_tipo_id')
+                        ->select('pessoas.nome', 'pessoas.telefone', 'pessoas.email', 'pessoa_tipo.descricao as nivel_de_acesso')
+                        ->get();
+
+        //Criando dos botões via DataTable.
+        return DataTables::of($pessoa)->make(true);
     }
     
     /**
@@ -48,6 +60,7 @@ class PessoaController extends Controller
             $destinationPath = public_path('img_perfil');
             $imagem->move($destinationPath, $name);
             
+            //inserção da pessoa no banco de dados
             $pessoa = new Pessoa;
             $pessoa->nome = $request->nome;
             $pessoa->telefone = $request->telefone;
@@ -56,7 +69,6 @@ class PessoaController extends Controller
             $pessoa->senha = Hash::make($request->password);
             $pessoa->pessoa_tipo_fk = $request->nivel_de_acesso;
             $pessoa->save();
-            
         }
     }
     

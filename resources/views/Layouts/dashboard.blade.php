@@ -15,6 +15,7 @@
   {{-- <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> --}}
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
   
   <link rel="stylesheet" href="{{ asset('dist/css/sidebar.css') }}">
   <!-- Google Font: Source Sans Pro -->
@@ -103,7 +104,7 @@
             <a href="#" class="dropdown-item">
               <!-- Message Start -->
               <div class="media">
-                <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <img src="#" alt="User Avatar" class="img-size-50 img-circle mr-3">
                 <div class="media-body">
                   <h3 class="dropdown-item-title">
                     Nora Silvester
@@ -275,32 +276,20 @@
         <!-- Control sidebar content goes here -->
       </aside>
       <!-- /.control-sidebar -->
-      
-      <!-- Main Footer -->
-      {{-- <footer class="main-footer">
-        <strong>Copyright &copy; 2019 - InProgress.</strong>
-        Todos os direitos reservados.
-        <div class="float-right d-none d-sm-inline-block">
-        </div>
-      </footer> --}}
     </div>
     <!-- ./wrapper -->
-    
-    <!-- REQUIRED SCRIPTS -->
-    
+        
     <!-- jQuery -->
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap -->
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE -->
     <script src="{{ asset('dist/js/adminlte.js') }}"></script>
-    
-    <!-- OPTIONAL SCRIPTS -->
-    <script src="{{ asset('plugins/chart.js/Chart.min.js') }} "></script>
+        {{-- <script src="{{ asset('plugins/chart.js/Chart.min.js') }} "></script> --}}
     <script src="{{ asset('dist/js/demo.js') }} "></script>
     <script src="{{ asset('dist/js/pages/dashboard3.js') }} "></script>
-    {{-- <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> --}}
-    
+    <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>   
+    <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script> 
     @yield('js')
   </body>
   </html>
