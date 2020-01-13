@@ -6,7 +6,7 @@
         <!-- onde se coloca as coisas -->
         <h1 class="text-center col-sm-11 col-md-11 offset-1 text-bold text-light bg-dark" style="margin-bottom: 0px;">Mapa Mesas</h1>
         
-        <div class="row col-sm-11 col-md-11 offset-1 bg-gradient-gray" style="">
+        <div class="row col-sm-11 col-md-11 offset-1 bg-gradient-gray" style="padding-right: 50px;">
             
             <button Comportamento type='button' class="col-1 offset-1 bg-success rounded-circle" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false"

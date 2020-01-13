@@ -15,11 +15,12 @@ class CreatePessoasTable extends Migration
     {
         Schema::create('pessoas', function (Blueprint $table) {
             $table->increments('pessoa_id');
-            $table->string('nome', 255)->nullable();
-            $table->string('telefone', 15)->unique()->nullable();
-            $table->string('cpf', 25)->unique()->nullable();            
-            $table->string('email', 255)->unique()->nullable();            
-            $table->string('senha', 8)->unique()->nullable();  
+            $table->string('nome', 255)->nullable(false);
+            $table->string('telefone', 15)->unique()->nullable(false);
+            $table->string('cpf', 25)->unique()->nullable(false);            
+            $table->string('email', 255)->unique()->nullable(false);            
+            $table->string('senha', 60)->unique()->nullable(false);  
+            $table->string('remember_token', 100)->nullable();  
             $table->integer('pessoa_tipo_fk')->unsigned();
             $table->foreign('pessoa_tipo_fk')->references('pessoa_tipo_id')->on('pessoa_tipo');        
             $table->timestamp('data_de_criacao')->default(DB::raw('CURRENT_TIMESTAMP'));
