@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Validator;
 use App\Pessoa;
 
 class PessoaController extends Controller
@@ -19,12 +20,29 @@ class PessoaController extends Controller
         return view('cadastros.pessoa.pessoa-listagem');
     }
     
+    /**
+    * Metodo faz um select em pessoa.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    protected function selectPessoa($colunas)
+    {
+        //Um select Join em pessoa.
+        $pessoa = Pessoa::join('pessoa_tipo', 'pessoas.pessoa_tipo_fk', '=', 'pessoa_tipo.pessoa_tipo_id')
+        ->select($colunas)->get();
+        
+        return $pessoa;
+    }
+    
+    /**
+    * Metodo que listar as pessoas existentes no banco e gera a tabela utilizando a biblioteca
+    * DataTables.
+    *
+    * @return \Illuminate\Http\Response
+    */
     public function mostrarUsuarios()
     {
-        //Um Select Join em pessoa.
-        $pessoa = Pessoa::join('pessoa_tipo', 'pessoas.pessoa_tipo_fk', '=', 'pessoa_tipo.pessoa_tipo_id')
-        ->select('pessoas.pessoa_id', 'pessoas.imagem', 'pessoas.nome', 'pessoas.telefone', 'pessoas.email', 'pessoa_tipo.descricao as nivel_de_acesso')
-        ->get();
+        $pessoa = $this->selectPessoa(['pessoas.pessoa_id', 'pessoas.imagem', 'pessoas.nome', 'pessoas.telefone', 'pessoas.email', 'pessoa_tipo.descricao as nivel_de_acesso']);
         
         return DataTables::of($pessoa)
         ->addColumn('action', function($pessoa){
@@ -48,12 +66,57 @@ class PessoaController extends Controller
     }
     
     /**
+    * Método faz um validação no dados trazidos do formulário.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
+    public function validacaoFormCadastro(Request $request)
+    {
+        $messages = [
+            'uploadFile.image' => 'Tem que ser arquivos de imagem.',
+            'required' => 'O campo :attribute não pode ser vazio.',
+            'password.required' => 'O campo senha não pode ser vazio.',
+            'nivel_de_acesso.required' => 'Selecione uma opção para nivel de acesso.',
+            'nome.max' => 'O campo nome tem tamanho máximo de 50 caracteres.',
+            'password.max' => 'O campo senha tem tamanho máximo de 8 caracteres.',
+            'nome.min' => 'O campo nome tem tamanho minimo de 5 caracteres.',
+            'password.min' => 'O campo senha tem tamanho minimo de 8 caracteres.',
+            'string' => 'O campo :attribute tem que ser caracteres.',
+            'email' => 'O campo :attribute tem que ser preenchido com um e-mail valido.',
+            'cpf.unique'=>'Esse cpf já pertence a um usúario cadastrado!',
+            'email.unique'=>'Esse email já pertence a um usúario cadastrado!',
+            'telefone.unique'=>'Esse telefone já pertence a um usúario cadastrado!'
+        ];
+        
+        $validator = Validator::make($request->all(), [
+            'uploadFile' => 'image',
+            'nome' => 'required|max:50|min:5|string',
+            'cpf' => 'required|unique:pessoas|string',
+            'email' => 'required|email|unique:pessoas',
+            'password' => 'required|string|max:8|min:8',
+            'telefone' => 'required|string|unique:pessoas',
+            'nivel_de_acesso' => 'required'
+        ], $messages);
+        
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 500);
+        } else {
+            if ($request->tela === 'cadastro') {
+                return $this->cadastrarPessoa($request);    
+            } else {
+                return $this->editarPessoa($request);
+            }
+        }
+    }
+    
+    /**
     * Método que cadastra os usuários.
     *
     * @param  \Illuminate\Http\Request  $request
     * @return \Illuminate\Http\Response
     */
-    public function cadastrarPessoa(Request $request)
+    private function cadastrarPessoa($request)
     {
         $cpf = trim($request->cpf);
         $cpf = str_replace(".", "", $cpf);
@@ -77,72 +140,30 @@ class PessoaController extends Controller
             $pessoa->imagem = $name;
             $pessoa->pessoa_tipo_fk = $request->nivel_de_acesso;
             $pessoa->save();
+            
+            return "Cadastrado com sucesso!";
         }
     }
     
     /**
-    * Show the form for creating a new resource.
+    * Método edita usuários já cadastrados.
     *
     * @return \Illuminate\Http\Response
     */
-    public function create()
+    private function editarPessoa($request)
     {
-        //
+        # code...
     }
     
+    
     /**
-    * Store a newly created resource in storage.
+    * Método que faz a desativação do usuário, utilizando a class de soft delete. 
     *
     * @param  \Illuminate\Http\Request  $request
     * @return \Illuminate\Http\Response
     */
-    public function store(Request $request)
+    public function excluirPessoa(Request $request)
     {
-        //
-    }
-    
-    /**
-    * Display the specified resource.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    public function show($id)
-    {
-        //
-    }
-    
-    /**
-    * Show the form for editing the specified resource.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    public function edit($id)
-    {
-        //
-    }
-    
-    /**
-    * Update the specified resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-    
-    /**
-    * Remove the specified resource from storage.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    public function destroy($id)
-    {
-        //
+        # code...
     }
 }

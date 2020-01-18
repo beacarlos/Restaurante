@@ -75,7 +75,7 @@
                         <div class="form-group col-md-6">
                             <label for="acesso">Nivel de acesso: </label>
                             <select id="acesso" class="form-control" name="nivel_de_acesso">
-                                <option selected>Escolher...</option>
+                                <option value="" selected>Escolher...</option>
                                 <option value="1">Garçom</option>
                                 <option value="2">Gerencia</option>
                                 <option value="3">Cozinha</option>
@@ -127,6 +127,7 @@
     $("form").submit(function (e) { 
         e.preventDefault();
         var formData = new FormData(this);
+        formData.append('tela', 'cadastro');
         $.ajax({
             type: "post",
             url: "{{route('pessoa.cadastro')}}",
@@ -141,19 +142,28 @@
             success: function (response) {
                 $('form')[0].reset();
                 $('.imagePreview').attr('src', "{{ asset('img/user.png') }}");
+                Swal.fire({
+                    icon: 'success',
+                    title: 'dsdff',
+                    text: response,
+                    timer: 1500
+                });
+            },
+            error: function (response) {
+                console.log(response)
             }
         });
     });
     
     // function select_nivel_de_acesso() { 
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "url",
-    //         success: function (response) {
+        //     $.ajax({
+            //         type: "POST",
+            //         url: "url",
+            //         success: function (response) {
                 
-    //         }
-    //     });
-    // }
-    
-</script>
-@endsection
+                //         }
+                //     });
+                // }
+                
+            </script>
+            @endsection

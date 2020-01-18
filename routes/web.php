@@ -52,5 +52,5 @@ Route::group(['prefix' => 'pessoa'], function () {
     Route::get('/listagem/view', 'PessoaController@mostrarUsuarios')->name('pessoa.listagem.datatables');
     //Rota da view Pessoa.
     Route::get('/cadastro', 'PessoaController@index')->name('pessoa.view');
-    Route::post('/cadastrar', 'PessoaController@cadastrarPessoa')->name('pessoa.cadastro');
+    Route::post('/cadastrar', 'PessoaController@validacaoFormCadastro')->name('pessoa.cadastro');
 });

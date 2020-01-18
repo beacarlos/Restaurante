@@ -23,7 +23,7 @@ class GerenteController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
