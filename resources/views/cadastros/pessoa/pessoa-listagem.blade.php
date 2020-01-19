@@ -140,6 +140,7 @@
                     url: "{{route('pessoa.exluir')}}",
                     data: {"id":id},
                     success: function (response) {
+                        tabela.ajax.reload();
                         Swal.fire('Deletado!',  'O usuário não pode mais ter acesso ao sistema.',  'success');
                     }
                 });
