@@ -10,6 +10,10 @@
 |
 */
 Route::get('/', function () {
+    return view('login.entrar');
+})->name('entrar.view');
+
+Route::get('/dashboard', function () {
     return view('dashboard.dashboard');
 })->name('dashboard.view');
 
