@@ -1,15 +1,42 @@
 @extends('Layouts.dashboard')
 
+@section('css')
+    <style>
+        .delete {
+            border: solid 1px #d12c38; background-color:transparent; color:#d12c38;
+        }
+        .delete:hover {
+            border: solid 1px #d12c38; background-color: #d12c38; color:#fff;
+        }
+
+        .edit {
+            border: solid 1px #036aa0; background-color:#036aa0; color:#fff;
+        }
+
+        .btnNovoCadastro {
+            margin-right: 3%; margin-bottom: 1%; background-color: #036aa0;
+        }
+    </style>
+@endsection
+
 @section('body')
-<div class="content">
+<div class="content" style="margin-bottom: 2%">
     <div class="container-fluid">
-        <h4 style="font-weight: bold; color: #008080;"><i class="far fa-user nav-icon"></i> Pessoa</h4>
+        <div class="row">
+            <div class="col-6 justify-content-between">
+                <h4 style="font-weight: bold; color: #008080;"><i class="far fa-user nav-icon"></i> Pessoa</h4>
+            </div>
+            <div class="col-6 ">
+                <div class="row justify-content-end " style="margin-right: 1%;">
+                    <a href="{{ route('pessoa.view')}}" type="button" class="btn btn-primary btnNovoCadastro"> <i class="fas fa-plus-square nav-icon"></i> Novo cadastro</a> 
+                </div>
+            </div>
+        </div>
+        
         <div class="row d-flex" style="border-bottom: 1px black solid; margin-right: 2%; "></div>
         <p style="font-size: 12px; font-weight: bold; color: dimgrey;">Tela onde podemos ver todos os usuários cadastrados no sistema.</p>
-        <div class="row  justify-content-end ">
-            <a href="{{ route('pessoa.view')}}" type="button" class="btn btn-primary" style="margin-right: 3%; margin-bottom: 1%;"> <i class="fas fa-plus-square nav-icon"></i> Novo cadastro</a> 
-        </div>
-        <div class="row d-flex justify-content-center table-striped">
+        
+        <div class="row d-flex justify-content-center" style="margin-left: 1%; margin-right: 0.5%;">
             <div class="col-12" id="div_fluxo" style="margin-right: 3%;" >
                 <table class="table table-bordered justify-content-center" id="tabela-usuarios" style="text-align: center;">
                     <thead class="thead-dark">
@@ -85,5 +112,9 @@
         return tabela;
         
     });
+    
+    function editarPessoa(id) { 
+        console.log(id);
+    }
 </script>
 @endsection

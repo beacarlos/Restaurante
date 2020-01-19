@@ -26,19 +26,20 @@
 @section('body')
 <div class="content">
     <div class="container-fluid">
-        <h4 style="font-weight: bold; color: #008080;"><i class="fas fa-user"></i> Cadastro de pessoas.</h4>
+        <h4 style="font-weight: bold; color: #008080;"><i class="fas fa-user"></i> Edição de pessoas.</h4>
         <div class="row d-flex" style="border-bottom: 1px black solid; margin-right: 2%; "></div>
-        <p style="font-size: 12px; font-weight: bold; color: dimgrey;">Tela que possibilita cadastro de pessoas.</p>
+        <p style="font-size: 12px; font-weight: bold; color: dimgrey;">Tela que possibilita edição dos dados de pessoas.</p>
     </div>
     
     <div class="container" >
+        @if (isset($dados_pessoa) && !empty($dados_pessoa))
         <form style="margin-right: 2%;">
             <div class="row">
                 <div class="col">
                     {{-- <img src="{{ asset('img/user.png') }}" class="img-fluid" draggable="false"> --}}
                     <div class="row">
                         <div class="imgUp">
-                            <img src="{{ asset('img/user.png') }}" class="imagePreview">
+                        <img src="/img_perfil/{{$dados_pessoa[0]->imagem}}" class="imagePreview">
                             <label class="btn btn-primary btn-upload">
                                 Selecione uma foto.<input type="file" class="uploadFile img" id="uploadFile" name="uploadFile" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
                             </label>
@@ -49,35 +50,35 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="nome">Nome</label>
-                            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome completo.">
+                            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome completo." value="{{$dados_pessoa[0]->nome}}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="cpf">CPF</label>
-                            <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF.">
+                            <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF." value="{{$dados_pessoa[0]->cpf}}">
                         </div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email.">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email." value="{{$dados_pessoa[0]->email}}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="senha">Senha</label>
-                            <input type="password" min="3" max="8" name="password" class="form-control" id="senha" placeholder="Senha.">
+                            <input type="password" min="3" max="8" name="password" class="form-control" value="" id="senha" placeholder="Senha.">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="telefone">Telefone</label>
-                            <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone.">
+                            <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone."value="{{$dados_pessoa[0]->telefone}}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="acesso">Nivel de acesso: </label>
                             <select id="acesso" class="form-control" name="nivel_de_acesso">
                                 <option value="" selected>Escolher...</option>
                                 @foreach ($nivel_de_acesso as $item)
-                                <option value="{{$item->pessoa_tipo_id}}">
+                                <option value="{{$item->pessoa_tipo_id}}" {{ $item->descricao == $dados_pessoa[0]->nivel_de_acesso ? 'selected' : '' }}>
                                     {{$item->descricao}}
                                 </option>
                                 @endforeach
@@ -87,77 +88,16 @@
                 </div>
             </div>
             
-            
-            <button type="submit" class="btn btn-primary" style="float: right;">Cadastrar Pessoa</button>
-        </form>
+            <button type="submit" class="btn btn-primary" style="float: right;">Editar Pessoa</button>
+        </form>           
+        @else
+        {{"Erro ao gerar a página de edição!"}}
+        @endif
     </div>
-    
 </div>
 @endsection
 
 @section('js')
 <script>
-    $(document).ready(function () {
-        console.clear();
-        $(".pessoas").addClass("active");
-        $(".item-cadastro").addClass("menu-open");
-    });
-    
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    
-    //Eventos de preview de imagens.
-    $("#uploadFile").change(function () {
-        const file = $(this)[0].files[0]
-        console.log(file.type);
-        const fileReader = new FileReader()
-        
-        if((file.type == "image/jpeg" || file.type == "image/png") || (file.type == "image/jpg")){
-            fileReader.onloadend = function () {
-                $(".imagePreview").attr('src', fileReader.result)
-            }
-            fileReader.readAsDataURL(file);
-        }
-        else{
-            console.log("não é imagem");
-        }
-    });
-    
-    $("form").submit(function (e) { 
-        e.preventDefault();
-        var formData = new FormData(this);
-        formData.append('tela', 'cadastro');
-        $.ajax({
-            type: "post",
-            url: "{{route('pessoa.cadastro')}}",
-            data: formData,
-            contentType: false,
-            cache: false,
-            async: false,
-            processData: false,
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function (response) {
-                $('form')[0].reset();
-                $('.imagePreview').attr('src', "{{ asset('img/user.png') }}");
-                Swal.fire({
-                    icon: 'success',
-                    title: 'dsdff',
-                    text: response,
-                    timer: 1500
-                });
-            },
-            error: function (response) {
-                console.log(response)
-            }
-        });
-    });
-    
-   
-    
 </script>
 @endsection

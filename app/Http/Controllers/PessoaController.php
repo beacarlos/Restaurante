@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 use App\Pessoa;
+use App\PessoaTipo;
 
 class PessoaController extends Controller
 {
@@ -25,7 +26,7 @@ class PessoaController extends Controller
     *
     * @return \Illuminate\Http\Response
     */
-    protected function selectPessoa($colunas)
+    protected static function selectPessoa($colunas)
     {
         //Um select Join em pessoa.
         $pessoa = Pessoa::join('pessoa_tipo', 'pessoas.pessoa_tipo_fk', '=', 'pessoa_tipo.pessoa_tipo_id')
@@ -42,13 +43,13 @@ class PessoaController extends Controller
     */
     public function mostrarUsuarios()
     {
-        $pessoa = $this->selectPessoa(['pessoas.pessoa_id', 'pessoas.imagem', 'pessoas.nome', 'pessoas.telefone', 'pessoas.email', 'pessoa_tipo.descricao as nivel_de_acesso']);
+        $pessoa = self::selectPessoa(['pessoas.pessoa_id', 'pessoas.imagem', 'pessoas.nome', 'pessoas.telefone', 'pessoas.email', 'pessoa_tipo.descricao as nivel_de_acesso']);
         
         return DataTables::of($pessoa)
         ->addColumn('action', function($pessoa){
-            $button = '<button type="button" name="edit" id="'.$pessoa->pessoa_id.'" class="edit btn btn-primary btn-sm"><i class="fas fa-edit"></i></button>';
+            $button = '<a type="button" name="edit" id="edit" href="/pessoa/editar/'.$pessoa->pessoa_id.'" class="edit btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>';
             $button .= '&nbsp;&nbsp;';
-            $button .= '<button type="button" name="delete" id="'.$pessoa->pessoa_id.'" class="delete btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>';
+            $button .= '<button type="button" name="delete" id="delete" onclick="deletarPessoa('.$pessoa->pessoa_id.')" class="delete btn btn-sm "><i class="fas fa-trash-alt"></i></button>';
             return $button;
         })
         ->rawColumns(['action'])
@@ -62,7 +63,8 @@ class PessoaController extends Controller
     */
     public function index ()
     {
-        return view('cadastros.pessoa.pessoa');
+        $nivel_de_acesso = $this->nivel_de_acesso();
+        return view('cadastros.pessoa.pessoa', compact('nivel_de_acesso'));
     }
     
     /**
@@ -146,15 +148,27 @@ class PessoaController extends Controller
     }
     
     /**
+    * Método que gera todos os niveis de acesso.
+    */
+    private function nivel_de_acesso()
+    {
+        return PessoaTipo::select('pessoa_tipo_id','descricao')->get();
+    }
+    
+    /**
     * Método edita usuários já cadastrados.
     *
     * @return \Illuminate\Http\Response
     */
-    private function editarPessoa($request)
+    protected function editarPessoaView($id)
     {
-        # code...
+        $dados_pessoa = Pessoa::join('pessoa_tipo', 'pessoas.pessoa_tipo_fk', '=', 'pessoa_tipo.pessoa_tipo_id')
+        ->select(['pessoas.imagem', 'pessoas.nome', 'pessoas.senha', 'pessoas.telefone', 'pessoas.cpf', 'pessoas.email', 'pessoa_tipo.descricao as nivel_de_acesso'])->where('pessoas.pessoa_id', '=', $id)->get();
+        
+        $nivel_de_acesso = $this->nivel_de_acesso();
+        
+        return view('cadastros.pessoa.editarPessoa', compact('dados_pessoa','nivel_de_acesso'));
     }
-    
     
     /**
     * Método que faz a desativação do usuário, utilizando a class de soft delete. 
@@ -162,7 +176,7 @@ class PessoaController extends Controller
     * @param  \Illuminate\Http\Request  $request
     * @return \Illuminate\Http\Response
     */
-    public function excluirPessoa(Request $request)
+    public function excluirPessoa($id)
     {
         # code...
     }
