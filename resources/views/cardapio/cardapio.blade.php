@@ -117,8 +117,8 @@
                         <input type="text" class="form-control" id="uname" placeholder="Enter username" name="nomeCat" required>
                      </div>
                </div>
-               <div class="container">
-                  <table class="table table-hover">
+               <div class="container" style="overflow: auto; width: 475px; height: 250px; border:solid 0.5px">
+                  <table class="table table-hover" style="width:475px">
                      <thead>
                         <tr>
                            <th>id</th>
@@ -127,7 +127,6 @@
                         </tr>
                      </thead>
                      <tbody>
-
 
                         @foreach($categs as $cat)
                         <tr>
@@ -158,26 +157,6 @@
       </div>
    </div>
 
-   <div class="container">
-      <div class="row">
-         <div class="col-4">
-            <div class="card">
-               <img src="https://static-images.ifood.com.br/image/upload/f_auto,t_medium/pratos/712f2c3e-43ed-42b0-801b-38567e20c9bf/201910111339_gPTF_i.jpg" alt="W3Schools.com">
-               <div class="container">
-                  <h4 class="text-center"><b>Mistão para 03 pessoas</b></h4>
-                  <p>Mistao para tres pessos,(frango assado, linguiça, carne bovina, uma porçao de baiao a moda, uma porçao de batata frita, vinagrete e farofa.)</p>
-               </div>
-               <div class="disponivel">
-                  <!--<button type="button" class="btn btn-success" id="status">Ativo</button>-->
-                  <!--<button type="button" class="btn btn-warning" id="valor" disabled>Valor: R$ 48,90</button>-->
-               </div>
-               <div class="preco" style="text-align: center;">
-                  <h6 id="valor" class="btn btn-warning">Valor: R$ 48,90</h6>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
 </div>
 
 <div class="container">
@@ -195,7 +174,7 @@
                   <div class="btn-group">
                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" ">
                   </button>
-                  <div class=" dropdown-menu">
+                  <div class="dropdown-menu">
                         <a class="dropdown-item" href="cardapio/prato/excluir/{{$pratos->prato_id}}">Excluir</a>
                         <a class="dropdown-item" href="cardapio/prato/editar/{{$pratos->prato_id}}" disabled>Editar</a>
                   </div>
