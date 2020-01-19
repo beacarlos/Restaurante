@@ -176,8 +176,8 @@ class PessoaController extends Controller
     * @param  \Illuminate\Http\Request  $request
     * @return \Illuminate\Http\Response
     */
-    public function excluirPessoa($id)
+    public function excluirPessoa(Request $id)
     {
-        # code...
+       return response()->json(null, 200);
     }
 }

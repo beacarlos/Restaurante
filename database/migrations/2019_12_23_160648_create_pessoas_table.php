@@ -26,6 +26,7 @@ class CreatePessoasTable extends Migration
             $table->foreign('pessoa_tipo_fk')->references('pessoa_tipo_id')->on('pessoa_tipo');        
             $table->timestamp('data_de_criacao')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('ultima_atualizacao')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->softDeletes('data_de_exclusao');	
         });
     }
     

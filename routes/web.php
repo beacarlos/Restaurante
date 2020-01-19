@@ -54,4 +54,5 @@ Route::group(['prefix' => 'pessoa'], function () {
     Route::get('/cadastro', 'PessoaController@index')->name('pessoa.view');
     Route::post('/cadastrar', 'PessoaController@validacaoFormCadastro')->name('pessoa.cadastro');
     Route::get('/editar/{id}', 'PessoaController@editarPessoaView')->name('pessoa.editar');
+    Route::post('/excluir', 'PessoaController@excluirPessoa')->name('pessoa.exluir');
 });

@@ -1,22 +1,22 @@
 @extends('Layouts.dashboard')
 
 @section('css')
-    <style>
-        .delete {
-            border: solid 1px #d12c38; background-color:transparent; color:#d12c38;
-        }
-        .delete:hover {
-            border: solid 1px #d12c38; background-color: #d12c38; color:#fff;
-        }
-
-        .edit {
-            border: solid 1px #036aa0; background-color:#036aa0; color:#fff;
-        }
-
-        .btnNovoCadastro {
-            margin-right: 3%; margin-bottom: 1%; background-color: #036aa0;
-        }
-    </style>
+<style>
+    .delete {
+        border: solid 1px #d12c38; background-color:transparent; color:#d12c38;
+    }
+    .delete:hover {
+        border: solid 1px #d12c38; background-color: #d12c38; color:#fff;
+    }
+    
+    .edit {
+        border: solid 1px #036aa0; background-color:#036aa0; color:#fff;
+    }
+    
+    .btnNovoCadastro {
+        margin-right: 3%; margin-bottom: 1%; background-color: #036aa0;
+    }
+</style>
 @endsection
 
 @section('body')
@@ -63,6 +63,12 @@
     $(document).ready(function () {
         $(".pessoas").addClass("active");
         $(".item-cadastro").addClass("menu-open");
+    });
+    
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
     });
     
     $(document).ready(function () {
@@ -115,6 +121,30 @@
     
     function editarPessoa(id) { 
         console.log(id);
+    }
+    
+    function deletarPessoa(id) {
+        Swal.fire({
+            title: 'Você tem certeza?',
+            text: "Isso não pode ser revertido!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, pode deletar!',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    type: "post",
+                    url: "{{route('pessoa.exluir')}}",
+                    data: {"id":id},
+                    success: function (response) {
+                        Swal.fire('Deletado!',  'O usuário não pode mais ter acesso ao sistema.',  'success');
+                    }
+                });
+            }
+        })
     }
 </script>
 @endsection
