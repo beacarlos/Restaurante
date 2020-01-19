@@ -24,6 +24,8 @@ Route::group(['prefix' => 'cardapio'], function () {
     // Route::post('/', 'CardapioController@store');
     Route::get('/categoria/excluir/{id}', 'categoriaController@destroy')->name('cardapio.destroy');
     Route::get('/prato/excluir/{id}', 'CardapioController@destroy');
+    Route::get('/prato/editar/{id}', 'CardapioController@edit');
+    Route::post('/alterar/{id}', 'CardapioController@update');
 });
 
 Route::post('/CategoriaPrato', 'categoriaController@store');

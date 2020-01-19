@@ -8,16 +8,13 @@
       width: 95%;
       border-radius: 10px;
    }
-
    .card:hover {
       box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
    }
-
    .container {
       /* padding: 5px 14px; */
       border-radius: 10px;
    }
-
    .preco {
       text-align: center !important;
    }
@@ -200,11 +197,10 @@
                   </button>
                   <div class=" dropdown-menu">
                         <a class="dropdown-item" href="cardapio/prato/excluir/{{$pratos->prato_id}}">Excluir</a>
-                        <a class="dropdown-item" href="#" disabled>Editar</a>
+                        <a class="dropdown-item" href="cardapio/prato/editar/{{$pratos->prato_id}}" disabled>Editar</a>
                   </div>
                </div>
             </div>
-
          </div>
          <div class="preco">
             <h6 id="valor" class="btn btn-warning">Valor: R$ {{$pratos->preco}}</h6>
@@ -216,13 +212,11 @@
 </div>
 </div>
 @endsection
-
 @section('js')
 <script>
    $(document).ready(function() {
       $(".cardapio").addClass("active");
    });
-
    function erroDelCat() {
       alert("Hello! I am an alert box!");
    };
@@ -230,7 +224,6 @@
       const file = $(this)[0].files[0]
       console.log(file.type);
       const fileReader = new FileReader()
-
       if ((file.type == "image/jpeg" || file.type == "image/png") || (file.type == "image/jpg")) {
          fileReader.onloadend = function() {
             $(".imagePreview").attr('src', fileReader.result)
