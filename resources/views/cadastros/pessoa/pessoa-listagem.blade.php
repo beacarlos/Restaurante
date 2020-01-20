@@ -123,7 +123,7 @@
         console.log(id);
     }
     
-    function deletarPessoa(id) {
+    function deletarPessoa(id) {    
         Swal.fire({
             title: 'Você tem certeza?',
             text: "Isso não pode ser revertido!",

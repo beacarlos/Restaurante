@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Crypt;
 use App\Pessoa;
 use App\PessoaTipo;
 
@@ -91,7 +92,7 @@ class PessoaController extends Controller
             'telefone.unique'=>'Esse telefone já pertence a um usúario cadastrado!'
         ];
         
-        $validator = Validator::make($request->all(), [
+        $rules_insert = [
             'uploadFile' => 'image',
             'nome' => 'required|max:50|min:5|string',
             'cpf' => 'required|unique:pessoas|string',
@@ -99,7 +100,23 @@ class PessoaController extends Controller
             'password' => 'required|string|max:8|min:8',
             'telefone' => 'required|string|unique:pessoas',
             'nivel_de_acesso' => 'required'
-        ], $messages);
+        ];
+        
+        $rules_update = [
+            'uploadFile' => 'image',
+            'nome' => 'required|max:50|min:5|string',
+            'cpf' => 'required|string',
+            'email' => 'required|email',
+            'password' => 'max:8',
+            'telefone' => 'required|string',
+            'nivel_de_acesso' => 'required'
+        ];
+        
+        if ($request->tela === 'cadastro') {
+            $validator = Validator::make($request->all(), $rules_insert, $messages);
+        } else {
+            $validator = Validator::make($request->all(), $rules_update, $messages);
+        }
         
         if ($validator->fails()) {
             return response()->json($validator->errors(), 500);
@@ -163,11 +180,45 @@ class PessoaController extends Controller
     protected function editarPessoaView($id)
     {
         $dados_pessoa = Pessoa::join('pessoa_tipo', 'pessoas.pessoa_tipo_fk', '=', 'pessoa_tipo.pessoa_tipo_id')
-        ->select(['pessoas.imagem', 'pessoas.nome', 'pessoas.senha', 'pessoas.telefone', 'pessoas.cpf', 'pessoas.email', 'pessoa_tipo.descricao as nivel_de_acesso'])->where('pessoas.pessoa_id', '=', $id)->get();
+        ->select(['pessoas.pessoa_id', 'pessoas.imagem', 'pessoas.nome', 'pessoas.senha', 'pessoas.telefone', 'pessoas.cpf', 'pessoas.email', 'pessoa_tipo.descricao as nivel_de_acesso'])->where('pessoas.pessoa_id', '=', $id)->get();
         
         $nivel_de_acesso = $this->nivel_de_acesso();
         
         return view('cadastros.pessoa.editarPessoa', compact('dados_pessoa','nivel_de_acesso'));
+    }
+    
+    public function editarPessoa($request)
+    {
+        $cpf = trim($request->cpf);
+        $cpf = str_replace(".", "", $cpf);
+        $cpf = str_replace(",", "", $cpf);
+        $cpf = str_replace("-", "", $cpf);
+        $cpf = str_replace("/", "", $cpf);
+        
+        if ($request->hasFile('uploadFile')) {
+            //deletar a imagem antiga que tá na pasta.
+            if (condition) {
+                # code...
+            }
+            $imagem = $request->uploadFile;
+            $name = $cpf.".".$imagem->getClientOriginalExtension();
+            $destinationPath = public_path('img_perfil');
+            $imagem->move($destinationPath, $name);
+        } 
+        
+        $pessoa = Pessoa::find($request->id);
+        $pessoa->nome = $request->nome;
+        $pessoa->telefone = $request->telefone;
+        $pessoa->cpf = $request->cpf;
+        $pessoa->email = $request->email;
+        if (!empty($request->password)) {
+            $pessoa->senha = Hash::make($request->password);
+        }
+        if ($request->hasFile('uploadFile')) {
+            $pessoa->imagem = $name;
+        }
+        $pessoa->pessoa_tipo_fk = $request->nivel_de_acesso;
+        $pessoa->save();
     }
     
     /**
