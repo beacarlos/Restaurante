@@ -39,7 +39,7 @@
                     {{-- <img src="{{ asset('img/user.png') }}" class="img-fluid" draggable="false"> --}}
                     <div class="row">
                         <div class="imgUp">
-                        <img src="/img_perfil/{{$dados_pessoa[0]->imagem}}" class="imagePreview">
+                            <img src="/img_perfil/{{$dados_pessoa[0]->imagem}}" class="imagePreview">
                             <label class="btn btn-primary btn-upload">
                                 Selecione uma foto.<input type="file" class="uploadFile img" id="uploadFile" name="uploadFile" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
                             </label>
@@ -51,6 +51,7 @@
                         <div class="form-group col-md-6">
                             <label for="nome">Nome</label>
                             <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome completo." value="{{$dados_pessoa[0]->nome}}">
+                            <input type="hidden" class="form-control" id="id" name="id" value="{{$dados_pessoa[0]->pessoa_id}}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="cpf">CPF</label>
@@ -99,5 +100,33 @@
 
 @section('js')
 <script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $("form").submit(function (e) { 
+        e.preventDefault();
+        var formData = new FormData(this);
+        $.ajax({
+            type: "post",
+            url: "{{route('pessoa.cadastro')}}",
+            data: formData,
+            contentType: false,
+            cache: false,
+            async: false,
+            processData: false,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (response) {
+                console.log(response)
+            }
+        });
+    });
 </script>
 @endsection
