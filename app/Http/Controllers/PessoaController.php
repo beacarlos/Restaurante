@@ -176,8 +176,11 @@ class PessoaController extends Controller
     * @param  \Illuminate\Http\Request  $request
     * @return \Illuminate\Http\Response
     */
-    public function excluirPessoa($id)
+    public function excluirPessoa(Request $id)
     {
-        # code...
+        $deletar = Pessoa::find($id->id);
+        $deletar->data_de_exclusao = now();
+        $deletar->save();
+        return response()->json(null, 200);
     }
 }

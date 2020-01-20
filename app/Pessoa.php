@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Pessoa extends Model
 {
+    use SoftDeletes;
+    
     /**
     * Colunas que é permitidos inserção em massa.
     * @var array
@@ -31,6 +35,12 @@ class Pessoa extends Model
     * @var string
     */
     const UPDATED_AT = 'ultima_atualizacao';
+    
+    /**
+    * Coluna last_update timestamp modificada.
+    * @var string
+    */
+    const DELETED_AT = 'data_de_exclusao';
     
     /**
     * A tabela mysql associada ao model.

@@ -112,7 +112,6 @@
     //Eventos de preview de imagens.
     $("#uploadFile").change(function () {
         const file = $(this)[0].files[0]
-        console.log(file.type);
         const fileReader = new FileReader()
         
         if((file.type == "image/jpeg" || file.type == "image/png") || (file.type == "image/jpg")){
@@ -145,8 +144,8 @@
                 $('form')[0].reset();
                 $('.imagePreview').attr('src', "{{ asset('img/user.png') }}");
                 Swal.fire({
-                    icon: 'success',
-                    title: 'dsdff',
+                    type: 'success',
+                    title: 'Sucesso!',
                     text: response,
                     timer: 1500
                 });
