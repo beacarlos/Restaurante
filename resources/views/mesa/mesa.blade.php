@@ -64,7 +64,7 @@
                     <div class="dropdown-divider"></div>
                     <a Color-Change-R class="dropdown-item" href="#" ;">Ocupado</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="Link da Comanda" ;">Comanda</a>
+                    <a class="dropdown-item" href="#"> Comanda</a>
                 </div>
                 
             </div>

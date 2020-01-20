@@ -46,7 +46,6 @@ class CardapioController extends Controller
         $prat->preco = $request->input('price');
         $prat->categoria_prato_fk=$request->input('descricaoCat');
         $prat->descricao = $request->input('descricao');
-        //$prat->ativo = $request->input('status');
         $prat->save();
         return redirect('/cardapio');
 

@@ -174,7 +174,7 @@
                   <div class="btn-group">
                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" ">
                   </button>
-                  <div class="dropdown-menu">
+                  <div class="dropdown-menu" >
                         <a class="dropdown-item" href="cardapio/prato/excluir/{{$pratos->prato_id}}">Excluir</a>
                         <a class="dropdown-item" href="cardapio/prato/editar/{{$pratos->prato_id}}" disabled>Editar</a>
                   </div>
