@@ -38,16 +38,4 @@ class User extends Authenticatable
     * @var string
     */
     const UPDATED_AT = 'ultima_atualizcao';
-    
-    /**
-    * A tabela mysql associada ao model.
-    * @var string
-    */
-    protected $table = 'pessoas';
-    
-    /**
-    * A chave primária da tabela.
-    * @var string
-    */
-    protected $primaryKey = 'pessoa_id';
 }

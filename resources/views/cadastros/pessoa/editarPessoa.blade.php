@@ -105,7 +105,24 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-
+    
+    
+    //Eventos de preview de imagens.
+    $("#uploadFile").change(function () {
+        const file = $(this)[0].files[0]
+        const fileReader = new FileReader()
+        
+        if((file.type == "image/jpeg" || file.type == "image/png") || (file.type == "image/jpg")){
+            fileReader.onloadend = function () {
+                $(".imagePreview").attr('src', fileReader.result)
+            }
+            fileReader.readAsDataURL(file);
+        }
+        else{
+            console.log("não é imagem");
+        }
+    });
+    
     $("form").submit(function (e) { 
         e.preventDefault();
         var formData = new FormData(this);
@@ -121,10 +138,24 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (response) {
-                console.log(response);
+                Swal.fire({
+                    position: 'center',
+                    type: 'success',
+                    title: 'Editado com sucesso! ',
+                    showConfirmButton: false,
+                    timer: 5000
+                });
+
+                $(location).attr('href', '{{route("pessoa.listagem.view")}}');
             },
             error: function (response) {
-                console.log(response)
+                Swal.fire({
+                    position: 'center',
+                    type: 'error',
+                    title: 'Aconteceu algo inesperado! ',
+                    showConfirmButton: false,
+                    timer: 5000
+                });            
             }
         });
     });
