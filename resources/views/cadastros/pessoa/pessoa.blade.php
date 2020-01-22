@@ -32,6 +32,8 @@
     </div>
     
     <div class="container" >
+        <div class="alert alert-danger" style="display:none"></div>
+        
         <form style="margin-right: 2%;">
             <div class="row">
                 <div class="col">
@@ -50,6 +52,7 @@
                         <div class="form-group col-md-6">
                             <label for="nome">Nome</label>
                             <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome completo.">
+                            <p id="nome_txt"></p>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="cpf">CPF</label>
@@ -141,19 +144,23 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (response) {
-                $('form')[0].reset();
-                $('.imagePreview').attr('src', "{{ asset('img/user.png') }}");
-                Swal.fire({
-                    type: 'success',
-                    title: 'Sucesso!',
-                    text: response,
-                    timer: 1500
-                });
-            },
-            error: function (response) {
-                console.log(response)
-            }
+                // $('form')[0].reset();
+                // $('.imagePreview').attr('src', "{{ asset('img/user.png') }}");
+                // Swal.fire({
+                    //     type: 'success',
+                    //     title: 'Sucesso!',
+                    //     text: response,
+                    //     timer: 1500
+                    // });
+                    
+                    
+                },
+                statusCode: { 
+                    500: function (response) {
+                       console.log("hdjh");
+                    }
+                }       
+            });
         });
-    });
-</script>
-@endsection
+    </script>
+    @endsection

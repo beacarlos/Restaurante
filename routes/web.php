@@ -62,3 +62,7 @@ Route::group(['prefix' => 'pessoa'], function () {
     Route::get('/editar/{id}', 'PessoaController@editarPessoaView')->name('pessoa.editar');
     Route::post('/excluir', 'PessoaController@excluirPessoa')->name('pessoa.exluir');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

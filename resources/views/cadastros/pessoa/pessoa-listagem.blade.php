@@ -119,10 +119,6 @@
         
     });
     
-    function editarPessoa(id) { 
-        console.log(id);
-    }
-    
     function deletarPessoa(id) {    
         Swal.fire({
             title: 'Você tem certeza?',

@@ -119,7 +119,7 @@ class PessoaController extends Controller
         }
         
         if ($validator->fails()) {
-            return response()->json($validator->errors(), 500);
+            return response()->json(['errors'=>$validator->errors()->all()], 500);
         } else {
             if ($request->tela === 'cadastro') {
                 return $this->cadastrarPessoa($request);    
@@ -187,23 +187,24 @@ class PessoaController extends Controller
         return view('cadastros.pessoa.editarPessoa', compact('dados_pessoa','nivel_de_acesso'));
     }
     
-    public function editarPessoa($request)
+    private function editarPessoa($request)
     {
         $cpf = trim($request->cpf);
         $cpf = str_replace(".", "", $cpf);
         $cpf = str_replace(",", "", $cpf);
         $cpf = str_replace("-", "", $cpf);
         $cpf = str_replace("/", "", $cpf);
+
+        $imagem_antiga = Pessoa::select('imagem')->where('pessoa_id', $request->id)->get();
         
         if ($request->hasFile('uploadFile')) {
             //deletar a imagem antiga que tá na pasta.
-            if (condition) {
-                # code...
-            }
-            $imagem = $request->uploadFile;
-            $name = $cpf.".".$imagem->getClientOriginalExtension();
-            $destinationPath = public_path('img_perfil');
-            $imagem->move($destinationPath, $name);
+            if (unlink(public_path('img_perfil/'.$imagem_antiga[0]->imagem))) {
+                $imagem = $request->uploadFile;
+                $name = $cpf.".".$imagem->getClientOriginalExtension();
+                $destinationPath = public_path('img_perfil');
+                $imagem->move($destinationPath, $name);
+            } else return response()->json("Erro ao editar!", 500);
         } 
         
         $pessoa = Pessoa::find($request->id);
@@ -211,14 +212,19 @@ class PessoaController extends Controller
         $pessoa->telefone = $request->telefone;
         $pessoa->cpf = $request->cpf;
         $pessoa->email = $request->email;
+
         if (!empty($request->password)) {
             $pessoa->senha = Hash::make($request->password);
         }
+
         if ($request->hasFile('uploadFile')) {
             $pessoa->imagem = $name;
         }
+
         $pessoa->pessoa_tipo_fk = $request->nivel_de_acesso;
         $pessoa->save();
+
+        return response()->json("Edição efeuada com sucesso", 200);
     }
     
     /**
@@ -227,7 +233,7 @@ class PessoaController extends Controller
     * @param  \Illuminate\Http\Request  $request
     * @return \Illuminate\Http\Response
     */
-    public function excluirPessoa(Request $id)
+    protected function excluirPessoa(Request $id)
     {
         $deletar = Pessoa::find($id->id);
         $deletar->data_de_exclusao = now();
