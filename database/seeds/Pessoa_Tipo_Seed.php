@@ -14,7 +14,7 @@ class Pessoa_Tipo_Seed extends Seeder
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
         $pessoa_tipo = PessoaTipo::query()->truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
         
         DB::table('pessoa_tipo')->insert([
             ['descricao'=> 'Garçom'],
