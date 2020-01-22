@@ -11,7 +11,7 @@ class Mesa extends Model
     * @var array
     */
     protected $fillable = [
-        'mesa_id', 'nome', 'disponibilidade', 'data_de_criacao', 'ultima_atualizacao'
+        'mesa_id', 'codigo', 'disponibilidade', 'data_de_criacao', 'ultima_atualizacao'
     ];
 
     /**
