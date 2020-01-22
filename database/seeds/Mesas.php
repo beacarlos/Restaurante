@@ -19,6 +19,5 @@ class Mesas extends Seeder
         for ($i=1; $i < 13; $i++) { 
             DB::table('mesas')->insert(['nome'=> 'Mesa '.$i]);
         }
-
     }
 }
