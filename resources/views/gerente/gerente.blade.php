@@ -20,7 +20,7 @@
         </div>
         <div class="row d-flex justify-content-center table-striped">
             <div class="col-11" id="div_comanda">
-                <table class="table" style="text-align: left;">
+                <table class="table" style="text-align: left;" id="tabela_comanda">
                     <caption style="text-align: right;">Valor Total: Bla bla bla </caption>
                     <thead class="thead-dark">
                         <tr>
@@ -39,7 +39,7 @@
                 </table>
             </div>
             <div class="col-11" id="div_fluxo">
-                <table class="table">
+                <table class="table" id="tabela_fluxo">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">#</th>
@@ -65,6 +65,10 @@
         });
         console.clear();
         $("#div_fluxo").hide();
+    });
+
+    $(document).ready(function () {
+        
     });
     
     $('input[type=radio]').change( function() {

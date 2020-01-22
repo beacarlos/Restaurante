@@ -17,11 +17,11 @@ class GerenteController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Mostra uma tabela com todas as mesas com comandas abertas e o valor total de consumo.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function fluxo()
     {
         
     }
