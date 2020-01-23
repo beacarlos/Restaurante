@@ -117,13 +117,13 @@
                         <input type="text" class="form-control" id="uname" placeholder="Enter username" name="nomeCat" required>
                      </div>
                </div>
-               <div class="container" style="overflow: auto; width: 475px; height: 250px; border:solid 0.5px">
-                  <table class="table table-hover" style="width:475px">
+               <div class="container" style="overflow: auto; width: 98%; height: 250px; border:solid 0.5px">
+                  <table class="table table-hover">
                      <thead>
                         <tr>
-                           <th>id</th>
-                           <th>Descrição</th>
-                           <th>Ações</th>
+                           <th width="10%">id</th>
+                           <th width="45%">Descrição</th>
+                           <th width="45%">Ações</th>
                         </tr>
                      </thead>
                      <tbody>

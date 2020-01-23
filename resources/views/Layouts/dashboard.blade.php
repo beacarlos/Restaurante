@@ -280,7 +280,9 @@
     <script src="{{ asset('dist/js/pages/dashboard3.js') }} "></script>
     <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>   
     <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script> 
-    <script src="{{ asset('plugins/sweetalert2/sweetalert2.all.min.js') }}"></script> 
+    <script src="{{ asset('plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
+    <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/moment/locales.min.js') }}"></script>
     @yield('js')
   </body>
   </html>

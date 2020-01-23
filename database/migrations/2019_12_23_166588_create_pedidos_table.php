@@ -17,6 +17,7 @@ class CreatePedidosTable extends Migration
             $table->increments('pedido_id');
             $table->bigInteger('quantidade');
             $table->boolean('status')->default(1);
+            $table->double('preco_total', 8, 2)->nullable(false);
             $table->integer('comanda_fk')->unsigned();
             $table->foreign('comanda_fk')->references('comanda_id')->on('comandas'); 
             $table->integer('prato_fk')->unsigned();
