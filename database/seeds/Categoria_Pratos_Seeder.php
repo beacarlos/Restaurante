@@ -6,10 +6,10 @@ use App\CategoriaPrato;
 class Categoria_Pratos_Seeder extends Seeder
 {
     /**
-    * Run the database seeds.
-    *
-    * @return void
-    */
+     * Run the database seeds.
+     *
+     * @return void
+     */
     public function run()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
@@ -23,6 +23,5 @@ class Categoria_Pratos_Seeder extends Seeder
             ['descricao'=> 'Massas'],
             ['descricao'=> 'Sobremessas']
             ]);
-        }
     }
-    
+}

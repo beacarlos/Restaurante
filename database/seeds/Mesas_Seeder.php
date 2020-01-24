@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Mesa;
 
-class Mesas extends Seeder
+class Mesas_Seeder extends Seeder
 {
     /**
      * Run the database seeds.

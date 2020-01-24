@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\PessoaTipo;
 
-class Pessoa_Tipo_Seed extends Seeder
+class Pessoa_Tipo_Seeder extends Seeder
 {
     /**
     * Run the database seeds.
