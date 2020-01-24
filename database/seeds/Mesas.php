@@ -16,7 +16,7 @@ class Mesas extends Seeder
         $mesas = Mesa::query()->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
-        for ($i=1; $i < 13; $i++) { 
+        for ($i=1; $i < 21; $i++) { 
             DB::table('mesas')->insert(['nome'=> 'Mesa '.$i]);
         }
     }

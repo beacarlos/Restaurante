@@ -46,6 +46,8 @@ Route::get('/pedido', function () {
 Route::group(['prefix' => 'gerencia'], function () {
     //Rota de view Gerencia.
     Route::get('/', 'GerenteController@index')->name('genrencia.index');
+    Route::get('/view', 'GerenteController@mostrarFluxo')->name('genrencia.fluxo');
+    Route::get('/view/comanda', 'GerenteController@mostarComanda')->name('gerencia.view.comanda');
 });
 
 
