@@ -144,16 +144,14 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (response) {
-                // $('form')[0].reset();
-                // $('.imagePreview').attr('src', "{{ asset('img/user.png') }}");
-                // Swal.fire({
-                    //     type: 'success',
-                    //     title: 'Sucesso!',
-                    //     text: response,
-                    //     timer: 1500
-                    // });
-                    
-                    
+                $('form')[0].reset();
+                $('.imagePreview').attr('src', "{{ asset('img/user.png') }}");
+                Swal.fire({
+                        type: 'success',
+                        title: 'Sucesso!',
+                        text: response,
+                        timer: 1500
+                    });
                 },
                 statusCode: { 
                     500: function (response) {
