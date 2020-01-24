@@ -33,37 +33,40 @@
         <h3 class="text-center col-sm-11 col-md-11 text-bold text-light bg-dark" style="margin-bottom: 0px; margin-left: 2.8%;">Mapa das mesas</h3>
 
         <div class="row col-sm-11 col-md-11 bg-gradient-gray container-mesas">
-            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="1">01</button>
-            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="5">05</button>
-            <button Comportamento type='button' class="col-1 offset-5 bg-success btnMesa" data-toggle="dropdown" data-mesa="13">13</button>
-            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="17">17</button>
+
+            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="1" value="01">01</button>
+            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="5" value="02">05</button>
+            <button Comportamento type='button' class="col-1 offset-5 bg-success btnMesa" data-toggle="dropdown" data-mesa="13" value="13">13</button>
+            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="17" value="17">17</button>
             <div class="w-100"></div>
             <div class="w-100"></div>
-            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="2">02</button>
-            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="6">06</button>
-            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="9">09</button>
-            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="11">11</button>
-            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="14">14</button>
-            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="18">18</button>
+            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="2" value="02">02</button>
+            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="6" value="06">06</button>
+            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="9" value="09">09</button>
+            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="11" value="11">11</button>
+            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="14" value="14">14</button>
+            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="18" value="18">18</button>
             <div class="w-100"></div>
             <div class="w-100"></div>
-            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="3">03</button>
-            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="7">07</button>
-            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="10">10</button>
-            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="12">12</button>
-            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="15">15</button>
-            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="19">19</button>
+            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="3" value="03">03</button>
+            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="7" value="07">07</button>
+            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="10" value="10">10</button>
+            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="12" value="12">12</button>
+            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="15" value="15">15</button>
+            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="19" value="19">19</button>
             <div class="w-100"></div>
             <div class="w-100"></div>
-            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="4">04</button>
-            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="8">08</button>
-            <button Comportamento type='button' class="col-1 offset-5 bg-success btnMesa" data-toggle="dropdown" data-mesa="16">16</button>
-            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="20">20</button>
+            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="4" value="04">04</button>
+            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="8" value="08">08</button>
+            <button Comportamento type='button' class="col-1 offset-5 bg-success btnMesa" data-toggle="dropdown" data-mesa="16" value="16">16</button>
+            <button Comportamento type='button' class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" data-mesa="20" value="20">20</button>
 
             <div class="dropdown-menu dropdown-menu-right">
                 <h6 class="dropdown-header">Status</h6>
+
                 <a Color-Change-G class="dropdown-item" href="#" ;">Disponível</a>
                 <div class="dropdown-divider"></div>
+                
                 <a Color-Change-R class="dropdown-item" href="#" ;">Ocupado</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#myModal">Comanda</a>
@@ -85,7 +88,7 @@
             <!-- Modal body -->
             <div class="modal-body">
                 <div>
-                    <button type="button" class="btn btn-primary">+ Pedido</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPedido">+ Pedido</button>
                     <button type="button" class="btn btn-danger">Encerrar</button>
                 </div>
                 <div class="row d-flex justify-content-center" style="margin-left: 1%; margin-right: 0.5%;">
@@ -121,6 +124,32 @@
 
 @section('js')
 <script>
+    var mysql = require('mysql');
+
+    var con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "restaurante"
+    });
+
+    var estado1 = '';
+    var estado2 = '';
+    con.connect(function(err) {
+
+        if (err) throw err;
+        //Select all customers and return the result object:
+        result = con.query("SELECT disponibilidade FROM mesas Where nome=1");
+        console.log("kldskjfnodpko´flpsdf");
+        console.log(resut[0][0]);
+        if(result[0][0] == 1){
+            estado1 = 'bg-success';
+            estado2 = 'bg-danger';
+        }else{
+            estado1 = 'bg-danger';
+            estado2 = 'bg-success';
+        }
+    });
     $(document).ready(function() {
         $(".mesas").addClass("active");
     });
@@ -136,19 +165,20 @@
     for (let i = 0; i < botao.length; i++) {
         botao[i].addEventListener("click", function(e) {
             console.log(`O elemento clicado foi o ${this.innerHTML}`);
+            
             arrayBotoes.push(this)
         })
-    }
+    };
+
 
     a1.onclick = function(e) {
         e.preventDefault();
-        arrayBotoes[arrayBotoes.length - 1].classList.replace('bg-danger', 'bg-success');
-        console.log("hsdhds");
+        arrayBotoes[arrayBotoes.length - 1].classList.replace(estado2, estado1);
     }
 
     a2.onclick = function(e) {
         e.preventDefault();
-        arrayBotoes[arrayBotoes.length - 1].classList.replace('bg-success', 'bg-danger');
+        arrayBotoes[arrayBotoes.length - 1].classList.replace(estado2, estado1);
     }
 </script>
 @endsection
