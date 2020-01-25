@@ -25,6 +25,6 @@
   </head>
 
   <body class="content">
-    @yield('body')
+    @yield('content')
   </body>
 </html>

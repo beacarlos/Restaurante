@@ -144,7 +144,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-edicao elevation-4">
       <!-- Brand Logo -->
-      <a href="index3.html" class="brand-link" style="background-color: #76DCD1;">
+      <a href="index3.html" class="brand-link" style="background-color: #57AA9A !important;">
         <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
         style="opacity: .8">
         <span class="brand-text font-weight-light" style="color: white; font-weight: bold !important;      ">Delicias de Delicias</span>
@@ -158,7 +158,22 @@
             <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#"  style="color: white;" class="d-block">Nome do usuário logado</a>
+              <p href="#" style="color: #fff; font-size: 14px" role="button" aria-expanded="false" aria-haspopup="true">
+                  {{ Auth::user()->name }} <span class="caret"></span>
+              </p>
+              <ul class="dropdown-menu">
+                  <li>
+                      <a href="{{ route('logout') }}"
+                          onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                          Logout
+                      </a>
+
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          {{ csrf_field() }}
+                      </form>
+                  </li>
+              </ul>
           </div>
         </div>
         
@@ -210,7 +225,6 @@
                 </p>
               </a>
             </li>
-            
             <li class="nav-item has-treeview item-cadastro">
               <a href="#" class="nav-link" style="color: white !important;">
                 <i class="fas fa-plus-square nav-icon"></i>
@@ -233,12 +247,25 @@
                   </a>
                 </li>
               </ul>
+              
+            <li class="nav-item"  style="    list-style-type: none; margin-top: 4rem; display: flex; justify-content: center; align-items: center;">
+              <a href="{{ route('logout') }}" style="font-size: 16px; color: #fff; height: 41px; width: 100%;" class="nav-link gerente btn btn-danger btn-lg" style="color: white !important;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+              <i class="fas fa-sign-out-alt"></i>
+                <p>
+                  sair
+                </p>
+              </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  {{ csrf_field() }}
+              </form>
+            </li>
             </li>
           </nav>
           <!-- /.sidebar-menu -->
         </div>
         <!-- /.sidebar -->
       </aside>
+      
       
       <!-- Content Wrapper. Contains page content -->
       <div class="container content-wrapper" style="background-color: white !important;">

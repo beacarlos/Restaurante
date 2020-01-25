@@ -8,14 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
-    
     /**
     * The attributes that are mass assignable.
     *
     * @var array
     */
     protected $fillable = [
-        'nome', 'telefone', 'email', 'cpf', 'senha', 'pessoa_tipo_fk', 'data_de_criacao', 'ultima_atualizacao'
+        'name', 'telefone', 'email', 'cpf', 'password', 'pessoa_tipo_fk', 'create_at', 'update_at'
     ];
     
     /**
@@ -24,30 +23,30 @@ class User extends Authenticatable
     * @var array
     */
     protected $hidden = [
-        'senha'
+        'password'
     ];
     
     /**
     * Coluna created_at timestamp modificada.
     * @var string
     */
-    const CREATED_AT = 'data_de_criacao';
+    const CREATED_AT = 'created_at';
     
     /**
     * Coluna last_update timestamp modificada.
     * @var string
     */
-    const UPDATED_AT = 'ultima_atualizcao';
+    const UPDATED_AT = 'updated_at';
     
     /**
     * A tabela mysql associada ao model.
     * @var string
     */
-    protected $table = 'pessoas';
+    protected $table = 'users';
     
     /**
     * A chave primária da tabela.
     * @var string
     */
-    protected $primaryKey = 'pessoa_id';
+    protected $primaryKey = 'id';
 }
