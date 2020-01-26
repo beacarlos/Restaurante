@@ -83,6 +83,7 @@ class mesaController extends Controller
     {
         //
     }
+    /*
     public function estado(Request $request){
         $mesan = $_GET['mesaa'];
         $mesa_stado = DB::select('SELECT disponibilidade FROM mesas WHERE nome=?',[$mesan]);
@@ -91,4 +92,5 @@ class mesaController extends Controller
             return view('mesa.mesa', compact('mesa_stado'));
         }
     }
+    */
 }

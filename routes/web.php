@@ -18,12 +18,12 @@ Route::get('/dashboard', function () {
 })->name('dashboard.view');
 
 Route::get('/mesa', function () {
-    return view('mesa.mesa', 'mesaController@estado');
+    return view('mesa.mesa');
 })->name('mesa.index');
-
+/*
 Route::group(['prefix' => 'mesa'], function () {
     Route::get('/', 'mesaController@estado')->name('mesa.index');
-});
+});*/
 
 Route::group(['prefix' => 'cardapio'], function () {
     Route::get('/', 'CardapioController@index')->name('cardapio.index');

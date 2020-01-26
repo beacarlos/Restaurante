@@ -28,13 +28,8 @@
     <div class="container-fluid">
         <!-- onde se coloca as coisas -->
         <h3 class="text-center col-sm-11 col-md-11 text-bold text-light bg-dark" style="margin-bottom: 0px; margin-left: 2.8%;">Mapa das mesas</h3>
-            
             <div class="row col-sm-11 col-md-11 bg-gradient-gray container-mesas">
-                @if ($mesa_stado == 1):
-                    <input type="button" Comportamento class="col-1 offset-1 bg-danger btnMesa" data-toggle="dropdown" name="mesaa" id="mesaa"value="1" />
-                @else:
-                    <input type="button" Comportamento class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown"  name="mesa" value="1" />
-                @endif
+                <input type="button" Comportamento class="col-1 offset-1 bg-danger btnMesa" data-toggle="dropdown" name="mesa" value="1" />
                 <input type="button" Comportamento class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" name="mesa" value="5" />
                 <input type="button" Comportamento class="col-1 offset-5 bg-success btnMesa" data-toggle="dropdown" name="mesa" value="13" />
                 <input type="button" Comportamento class="col-1 offset-1 bg-success btnMesa" data-toggle="dropdown" name="mesa" value="17" />
