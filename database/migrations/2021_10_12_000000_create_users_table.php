@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('telefone', 50)->unique()->nullable(false);
             $table->string('cpf', 25)->unique()->nullable(false);            
             $table->string('email')->unique();
-            $table->string('senha');
+            $table->string('password');
             $table->rememberToken();
             $table->string('imagem', 255)->unique()->nullable(false);  
             $table->integer('pessoa_tipo_fk')->unsigned();
