@@ -86,49 +86,69 @@
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body">
-                    
-                </div>
+                    <div class="container">
+                        <button type="button" class="btn btn-primary">+Pedir</button>
+                        <button type="button" class="btn btn-danger">Danger</button>
+                    </div>
+                    <br>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-11" id="div_fluxo">
+                            <table class="table table-bordered justify-content-center" id="tabela_fluxo" style="margin-top: 0% !important; border-top: none !important; width: 100% !important; text-align: center;">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Prato</th>
+                                        <th scope="col">Quantidade</th>
+                                        <th scope="col">Valor</th>
+                                        <th scope="col">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="">
 
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+    @endsection
 
-@section('js')
-<script>
-    $(document).ready(function() {
-        $(".mesas").addClass("active");
-    });
+    @section('js')
+    <script>
+        $(document).ready(function() {
+            $(".mesas").addClass("active");
+        });
 
-    const a1 = document.querySelector('[Color-Change-G]')
-    const a2 = document.querySelector('[Color-Change-R]')
+        const a1 = document.querySelector('[Color-Change-G]')
+        const a2 = document.querySelector('[Color-Change-R]')
 
 
-    const botao = document.querySelectorAll("[Comportamento]");
-    console.log(botao[0].dataset.mesa);
-    const arrayBotoes = []
+        const botao = document.querySelectorAll("[Comportamento]");
+        console.log(botao[0].dataset.mesa);
+        const arrayBotoes = []
 
-    for (let i = 0; i < botao.length; i++) {
-        botao[i].addEventListener("click", function(e) {
-            console.log(`O elemento clicado foi o ${this.innerHTML}`);
-            arrayBotoes.push(this)
-        })
-    }
+        for (let i = 0; i < botao.length; i++) {
+            botao[i].addEventListener("click", function(e) {
+                console.log(`O elemento clicado foi o ${this.innerHTML}`);
+                arrayBotoes.push(this)
+            })
+        }
 
-    a1.onclick = function(e) {
-        e.preventDefault();
-        arrayBotoes[arrayBotoes.length - 1].classList.replace('bg-success', 'bg-danger');
-        console.log("hsdhds");
-    }
+        a1.onclick = function(e) {
+            e.preventDefault();
+            arrayBotoes[arrayBotoes.length - 1].classList.replace('bg-success', 'bg-danger');
+            console.log("hsdhds");
+        }
 
-    a2.onclick = function(e) {
-        e.preventDefault();
-        arrayBotoes[arrayBotoes.length - 1].classList.replace('bg-danger', 'bg-success');
-    }
-</script>
-@endsection
+        a2.onclick = function(e) {
+            e.preventDefault();
+            arrayBotoes[arrayBotoes.length - 1].classList.replace('bg-danger', 'bg-success');
+        }
+    </script>
+    @endsection

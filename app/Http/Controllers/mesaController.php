@@ -94,7 +94,5 @@ class mesaController extends Controller
         }
     }
     */
-    public function comanda_mesa(){
-        
-    }
+
 }
