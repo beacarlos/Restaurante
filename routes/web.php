@@ -22,13 +22,10 @@ Route::get('/dashboard', function () {
     return view('dashboard.dashboard');
 })->name('dashboard.view');
 
-Route::get('/mesa', function () {
-    return view('mesa.mesa');
-})->name('mesa.index');
-/*
 Route::group(['prefix' => 'mesa'], function () {
-    Route::get('/', 'mesaController@estado')->name('mesa.index');
-});*/
+    Route::get('/', 'mesaController@index')->name('mesa.index');
+    Route::get('/ver', 'mesaController@mostrarMesas')->name('mesa.mostrarMesas');
+});
 
 Route::group(['prefix' => 'cardapio'], function () {
     Route::get('/', 'CardapioController@index')->name('cardapio.index');
@@ -73,4 +70,3 @@ Route::group(['prefix' => 'pessoa'], function () {
     Route::get('/editar/{id}', 'PessoaController@editarPessoaView')->name('pessoa.editar');
     Route::post('/excluir', 'PessoaController@excluirPessoa')->name('pessoa.exluir');
 });
-

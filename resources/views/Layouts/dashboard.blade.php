@@ -167,9 +167,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+            <img src="{{ asset('/img_perfil/'.Auth::user()->imagem) }}" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
+            {{Auth::user()->nome}}
           </div>
         </div>
         
@@ -244,17 +245,17 @@
                 </li>
               </ul>
               
-            <li class="nav-item"  style="    list-style-type: none; margin-top: 4rem; display: flex; justify-content: center; align-items: center;">
-              <a href="{{ route('logout') }}" style="font-size: 16px; color: #fff; height: 41px; width: 100%;" class="nav-link gerente btn btn-danger btn-lg" style="color: white !important;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-              <i class="fas fa-sign-out-alt"></i>
-                <p>
-                  sair
-                </p>
-              </a>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              <li class="nav-item"  style="    list-style-type: none; margin-top: 4rem; display: flex; justify-content: center; align-items: center;">
+                <a href="{{ route('logout') }}" style="font-size: 16px; color: #fff; height: 41px; width: 100%;" class="nav-link gerente btn btn-danger btn-lg" style="color: white !important;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                  <i class="fas fa-sign-out-alt"></i>
+                  <p>
+                    sair
+                  </p>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   {{ csrf_field() }}
-              </form>
-            </li>
+                </form>
+              </li>
             </li>
           </nav>
           <!-- /.sidebar-menu -->

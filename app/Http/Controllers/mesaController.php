@@ -16,7 +16,7 @@ class mesaController extends Controller
      */
     public function index()
     {
-        //
+        return view('mesa.mesa');
     }
 
     /**
@@ -26,7 +26,13 @@ class mesaController extends Controller
      */
     public function create()
     {
-        //
+    }
+
+    protected function mostrarMesas()
+    {
+        $mesas = Mesa::select('mesa_id', 'nome', 'disponibilidade')->get();
+        // return $mesas;
+        return response()->json($mesas, 200);
     }
 
     /**

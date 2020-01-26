@@ -51,63 +51,6 @@ class GerenteController extends Controller
         
         $comanda['valor_total'] = DB::select("SELECT sum(pedidos.preco_total) as preco_total from comandas INNER JOIN pedidos on comandas.comanda_id = pedidos.comanda_fk WHERE comandas.status = :status and pedidos.comanda_fk = :comanda_id GROUP BY comandas.comanda_id", ["status"=> 1, "comanda_id" => $comanda_id->comanda_id]);
 
-        // return $comanda;
         return response()->json($comanda, 200);
-    }
-    
-    /**
-    * Store a newly created resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @return \Illuminate\Http\Response
-    */
-    public function store(Request $request)
-    {
-        //
-    }
-    
-    /**
-    * Display the specified resource.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    public function show($id)
-    {
-        //
-    }
-    
-    /**
-    * Show the form for editing the specified resource.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    public function edit($id)
-    {
-        //
-    }
-    
-    /**
-    * Update the specified resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-    
-    /**
-    * Remove the specified resource from storage.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    public function destroy($id)
-    {
-        //
     }
 }
