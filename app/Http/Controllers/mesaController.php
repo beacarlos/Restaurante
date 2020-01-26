@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Mesa;
+use App\Pedido;
+use App\Comanda;
+
 
 
 class mesaController extends Controller
@@ -34,6 +37,10 @@ class mesaController extends Controller
         // return $mesas;
         return response()->json($mesas, 200);
     }
+    public function mostrarComanda(){
+
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -54,7 +61,7 @@ class mesaController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -88,17 +95,15 @@ class mesaController extends Controller
      */
     public function destroy($id)
     {
-        //
+    
     }
-    /*
-    public function estado(Request $request){
-        $mesan = $_GET['mesaa'];
-        $mesa_stado = DB::select('SELECT disponibilidade FROM mesas WHERE nome=?',[$mesan]);
-        
-        if(isset($mesa_stado)){
-            return view('mesa.mesa', compact('mesa_stado'));
+    public function mostracomanda($id){
+        $mesa = DB::select('SELECT comanda_id FROM comandas WHERE mesa_fk = ?',[$id]);
+        $mesa = intval($mesa);
+        if(isset($mesa)){
+            $comandax = DB::select('SELECT pedidos.quantidade, pedidos.preco_total, pratos.nome FROM pratos, pedidos WHERE pedidos.comanda_fk= ?', [$mesa]);
+            return view('mesa.comanda', compact('comandax'));
         }
+        return view('mesa.comanda');
     }
-    */
-
 }

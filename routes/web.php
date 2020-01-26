@@ -17,7 +17,6 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
 Route::get('/dashboard', function () {
     return view('dashboard.dashboard');
 })->name('dashboard.view');
@@ -25,6 +24,8 @@ Route::get('/dashboard', function () {
 Route::group(['prefix' => 'mesa'], function () {
     Route::get('/', 'mesaController@index')->name('mesa.index');
     Route::get('/ver', 'mesaController@mostrarMesas')->name('mesa.mostrarMesas');
+    Route::get('/comandax', 'mesaController@mostrarComanda')->name('mesa.comanda');
+    Route::get('/comandax/{id}', 'mesaController@mostracomanda')->name('mesa.comanda');
 });
 
 Route::group(['prefix' => 'cardapio'], function () {
