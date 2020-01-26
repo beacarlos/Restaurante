@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-
+  
   <title>Restaurante - Delicias de Delicias</title>
   
   <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css')}} ">
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/sweetalert2.min.css') }}">
   <link rel="stylesheet" href="{{ asset('dist/css/sidebar.css') }}">
   
- <style>
+  <style>
     .wrapper {
       overflow: hidden;
     }
@@ -34,6 +34,18 @@
     .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
       color: #fff;
       background-color: #6AC5BC !important;
+    }
+    
+    .titulo {
+      font-weight: bold; color: #008080;
+    }
+    
+    .linha_titulo {
+      border-bottom: 1px black solid; margin-right: 2%; 
+    }
+    
+    .info_titulo {
+      font-size: 12px; font-weight: bold; color: dimgrey;
     }
   </style>
   @yield('css')
@@ -158,22 +170,7 @@
             <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-              <p href="#" style="color: #fff; font-size: 14px" role="button" aria-expanded="false" aria-haspopup="true">
-                  {{ Auth::user()->name }} <span class="caret"></span>
-              </p>
-              <ul class="dropdown-menu">
-                  <li>
-                      <a href="{{ route('logout') }}"
-                          onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                          Logout
-                      </a>
-
-                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                          {{ csrf_field() }}
-                      </form>
-                  </li>
-              </ul>
+          {{ Auth::user()->name }}
           </div>
         </div>
         
@@ -295,19 +292,21 @@
       <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
-        
+    
     <!-- jQuery -->
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap -->
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE -->
     <script src="{{ asset('dist/js/adminlte.js') }}"></script>
-        {{-- <script src="{{ asset('plugins/chart.js/Chart.min.js') }} "></script> --}}
+    {{-- <script src="{{ asset('plugins/chart.js/Chart.min.js') }} "></script> --}}
     <script src="{{ asset('dist/js/demo.js') }} "></script>
     <script src="{{ asset('dist/js/pages/dashboard3.js') }} "></script>
     <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>   
     <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script> 
-    <script src="{{ asset('plugins/sweetalert2/sweetalert2.all.min.js') }}"></script> 
+    <script src="{{ asset('plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
+    <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/moment/locales.min.js') }}"></script>
     @yield('js')
   </body>
   </html>

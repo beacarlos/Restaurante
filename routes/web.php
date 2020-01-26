@@ -33,6 +33,8 @@ Route::group(['prefix' => 'cardapio'], function () {
     // Route::post('/', 'CardapioController@store');
     Route::get('/categoria/excluir/{id}', 'categoriaController@destroy')->name('cardapio.destroy');
     Route::get('/prato/excluir/{id}', 'CardapioController@destroy');
+    Route::get('/prato/editar/{id}', 'CardapioController@edit');
+    Route::post('/alterar/{id}', 'CardapioController@update');
 });
 
 Route::post('/CategoriaPrato', 'categoriaController@store');
@@ -49,6 +51,8 @@ Route::get('/pedido', function () {
 Route::group(['prefix' => 'gerencia'], function () {
     //Rota de view Gerencia.
     Route::get('/', 'GerenteController@index')->name('genrencia.index');
+    Route::get('/view', 'GerenteController@mostrarFluxo')->name('genrencia.fluxo');
+    Route::get('/view/comanda', 'GerenteController@mostarComanda')->name('gerencia.view.comanda');
 });
 
 
@@ -65,5 +69,4 @@ Route::group(['prefix' => 'pessoa'], function () {
     Route::get('/editar/{id}', 'PessoaController@editarPessoaView')->name('pessoa.editar');
     Route::post('/excluir', 'PessoaController@excluirPessoa')->name('pessoa.exluir');
 });
-
 

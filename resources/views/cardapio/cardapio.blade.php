@@ -8,16 +8,13 @@
       width: 95%;
       border-radius: 10px;
    }
-
    .card:hover {
       box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
    }
-
    .container {
       /* padding: 5px 14px; */
       border-radius: 10px;
    }
-
    .preco {
       text-align: center !important;
    }
@@ -120,17 +117,16 @@
                         <input type="text" class="form-control" id="uname" placeholder="Enter username" name="nomeCat" required>
                      </div>
                </div>
-               <div class="container">
+               <div class="container" style="overflow: auto; width: 98%; height: 250px; border:solid 0.5px">
                   <table class="table table-hover">
                      <thead>
                         <tr>
-                           <th>id</th>
-                           <th>Descrição</th>
-                           <th>Ações</th>
+                           <th width="10%">id</th>
+                           <th width="45%">Descrição</th>
+                           <th width="45%">Ações</th>
                         </tr>
                      </thead>
                      <tbody>
-
 
                         @foreach($categs as $cat)
                         <tr>
@@ -161,26 +157,6 @@
       </div>
    </div>
 
-   <div class="container">
-      <div class="row">
-         <div class="col-4">
-            <div class="card">
-               <img src="https://static-images.ifood.com.br/image/upload/f_auto,t_medium/pratos/712f2c3e-43ed-42b0-801b-38567e20c9bf/201910111339_gPTF_i.jpg" alt="W3Schools.com">
-               <div class="container">
-                  <h4 class="text-center"><b>Mistão para 03 pessoas</b></h4>
-                  <p>Mistao para tres pessos,(frango assado, linguiça, carne bovina, uma porçao de baiao a moda, uma porçao de batata frita, vinagrete e farofa.)</p>
-               </div>
-               <div class="disponivel">
-                  <!--<button type="button" class="btn btn-success" id="status">Ativo</button>-->
-                  <!--<button type="button" class="btn btn-warning" id="valor" disabled>Valor: R$ 48,90</button>-->
-               </div>
-               <div class="preco" style="text-align: center;">
-                  <h6 id="valor" class="btn btn-warning">Valor: R$ 48,90</h6>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
 </div>
 
 <div class="container">
@@ -198,13 +174,12 @@
                   <div class="btn-group">
                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" ">
                   </button>
-                  <div class=" dropdown-menu">
+                  <div class="dropdown-menu" >
                         <a class="dropdown-item" href="cardapio/prato/excluir/{{$pratos->prato_id}}">Excluir</a>
-                        <a class="dropdown-item" href="#" disabled>Editar</a>
+                        <a class="dropdown-item" href="cardapio/prato/editar/{{$pratos->prato_id}}" disabled>Editar</a>
                   </div>
                </div>
             </div>
-
          </div>
          <div class="preco">
             <h6 id="valor" class="btn btn-warning">Valor: R$ {{$pratos->preco}}</h6>
@@ -216,13 +191,11 @@
 </div>
 </div>
 @endsection
-
 @section('js')
 <script>
    $(document).ready(function() {
       $(".cardapio").addClass("active");
    });
-
    function erroDelCat() {
       alert("Hello! I am an alert box!");
    };
@@ -230,7 +203,6 @@
       const file = $(this)[0].files[0]
       console.log(file.type);
       const fileReader = new FileReader()
-
       if ((file.type == "image/jpeg" || file.type == "image/png") || (file.type == "image/jpg")) {
          fileReader.onloadend = function() {
             $(".imagePreview").attr('src', fileReader.result)

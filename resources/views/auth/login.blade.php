@@ -1,6 +1,14 @@
 @extends('layouts.login')
 
 @section('content')
+<div class="alert-content">
+  @if ($errors->has('email'))
+  <div class="alert alert-danger alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    E-mail ou senha incorretos.
+  </div>
+  @endif
+</div>
 <div class="container">
     <div class="row">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -18,12 +26,6 @@
                                     <i class="fas fa-user"></i> 
                                     Email
                                 </label>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
                         </div>
 
                         <div class="form-label{{ $errors->has('password') ? ' has-error' : '' }}">
@@ -35,7 +37,7 @@
                                 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        <strong>E-mail ou senha incorreto</strong>
                                     </span>
                                 @endif
                             </div>
@@ -56,10 +58,38 @@
 </div>
 @endsection
 
-
 @section('css')
 
 <style>
+.alert-content {
+  height: 75px;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  width: 400px;
+}
+
+dismissible .close {
+  position: relative;
+  top: -10px;
+  right: 0px;
+  color: inherit;
+}
+
+.alert-dismissible .close {
+  position: relative;
+  top: -10px;
+  right: 0px;
+  color: inherit;
+}
+
 .container {
   display: block;
   margin-top: 10%;
@@ -131,13 +161,13 @@ img {
 }
 
 .btn:hover  {
-    background-color: #76DCD1;
+  background-color: #76DCD1;
 }
 
 .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
-    color: #fff;
-    background-color: #76DCD1;
-    border-color: #76DCD1;
+  color: #fff;
+  background-color: #76DCD1;
+  border-color: #76DCD1;
 }
 
 .form-control:focus {

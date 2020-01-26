@@ -46,7 +46,6 @@ class CardapioController extends Controller
         $prat->preco = $request->input('price');
         $prat->categoria_prato_fk=$request->input('descricaoCat');
         $prat->descricao = $request->input('descricao');
-        //$prat->ativo = $request->input('status');
         $prat->save();
         return redirect('/cardapio');
 
@@ -71,7 +70,12 @@ class CardapioController extends Controller
      */
     public function edit($id)
     {
-        //
+        $prat = Prato::find($id);
+        $categs = CategoriaPrato::all();
+        if(isset($prat)){
+            return view('cardapio.prato', compact('prat', 'categs'));
+        }
+        return redirect('cardapio.cardapio');
     }
 
     /**
@@ -83,7 +87,15 @@ class CardapioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $prat = Prato::find($id);
+        if(isset($prat)){
+            $prat->nome = $request->input('name');
+            $prat->preco = $request->input('price');
+            $prat->categoria_prato_fk=$request->input('descricaoCat');
+            $prat->descricao = $request->input('descricao');
+            $prat->save();
+        }
+        return redirect('/cardapio');
     }
 
     /**

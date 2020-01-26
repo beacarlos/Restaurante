@@ -60,11 +60,11 @@
                 
                 <div class="dropdown-menu dropdown-menu-right">
                     <h6 class="dropdown-header">Status</h6>
-                    <a Color-Change-G class="dropdown-item" href="#" ;">Disponível</a>
+                    <a Color-Change-G class="dropdown-item" href="#">Disponível</a>
                     <div class="dropdown-divider"></div>
-                    <a Color-Change-R class="dropdown-item" href="#" ;">Ocupado</a>
+                    <a Color-Change-R class="dropdown-item" href="#">Ocupado</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="Link da Comanda" ;">Comanda</a>
+                    <a class="dropdown-item" href="#"> Comanda</a>
                 </div>
                 
             </div>
