@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Crypt;
-use App\Pessoa;
+use App\User;
 use App\PessoaTipo;
 
 class PessoaController extends Controller
@@ -31,27 +31,27 @@ class PessoaController extends Controller
     protected static function selectPessoa($colunas)
     {
         //Um select Join em pessoa.
-        $pessoa = Pessoa::join('pessoa_tipo', 'pessoas.pessoa_tipo_fk', '=', 'pessoa_tipo.pessoa_tipo_id')
+        $pessoa = User::join('pessoa_tipo', 'users.pessoa_tipo_fk', '=', 'pessoa_tipo.pessoa_tipo_id')
         ->select($colunas)->get();
         
         return $pessoa;
     }
     
     /**
-    * Metodo que listar as pessoas existentes no banco e gera a tabela utilizando a biblioteca
+    * Metodo que listar as users existentes no banco e gera a tabela utilizando a biblioteca
     * DataTables.
     *
     * @return \Illuminate\Http\Response
     */
     public function mostrarUsuarios()
     {
-        $pessoa = self::selectPessoa(['pessoas.pessoa_id', 'pessoas.imagem', 'pessoas.nome', 'pessoas.telefone', 'pessoas.email', 'pessoa_tipo.descricao as nivel_de_acesso']);
+        $pessoa = self::selectPessoa(['users.id', 'users.imagem', 'users.nome', 'users.telefone', 'users.email', 'pessoa_tipo.descricao as nivel_de_acesso']);
         
         return DataTables::of($pessoa)
         ->addColumn('action', function($pessoa){
-            $button = '<a type="button" name="edit" id="edit" href="/pessoa/editar/'.$pessoa->pessoa_id.'" class="edit btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>';
+            $button = '<a type="button" name="edit" id="edit" href="/pessoa/editar/'.$pessoa->id.'" class="edit btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>';
             $button .= '&nbsp;&nbsp;';
-            $button .= '<button type="button" name="delete" id="delete" onclick="deletarPessoa('.$pessoa->pessoa_id.')" class="delete btn btn-sm "><i class="fas fa-trash-alt"></i></button>';
+            $button .= '<button type="button" name="delete" id="delete" onclick="deletarPessoa('.$pessoa->id.')" class="delete btn btn-sm "><i class="fas fa-trash-alt"></i></button>';
             return $button;
         })
         ->rawColumns(['action'])
@@ -63,7 +63,7 @@ class PessoaController extends Controller
     *
     * @return \Illuminate\Http\Response
     */
-    public function index ()
+    public function index()
     {
         $nivel_de_acesso = $this->nivel_de_acesso();
         return view('cadastros.pessoa.pessoa', compact('nivel_de_acesso'));
@@ -96,10 +96,10 @@ class PessoaController extends Controller
         $rules_insert = [
             'uploadFile' => 'image',
             'nome' => 'required|max:50|min:5|string',
-            'cpf' => 'required|unique:pessoas|string',
-            'email' => 'required|email|unique:pessoas',
-            'password' => 'required|string|max:8|min:8',
-            'telefone' => 'required|string|unique:pessoas',
+            'cpf' => 'required|unique:users|string',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|max:8|min:4',
+            'telefone' => 'required|string|unique:users',
             'nivel_de_acesso' => 'required'
         ];
         
@@ -151,7 +151,7 @@ class PessoaController extends Controller
             $imagem->move($destinationPath, $name);
             
             //inserção da pessoa no banco de dados
-            $pessoa = new Pessoa;
+            $pessoa = new User;
             $pessoa->nome = $request->nome;
             $pessoa->telefone = $request->telefone;
             $pessoa->cpf = $request->cpf;
@@ -180,8 +180,8 @@ class PessoaController extends Controller
     */
     protected function editarPessoaView($id)
     {
-        $dados_pessoa = Pessoa::join('pessoa_tipo', 'pessoas.pessoa_tipo_fk', '=', 'pessoa_tipo.pessoa_tipo_id')
-        ->select(['pessoas.pessoa_id', 'pessoas.imagem', 'pessoas.nome', 'pessoas.senha', 'pessoas.telefone', 'pessoas.cpf', 'pessoas.email', 'pessoa_tipo.descricao as nivel_de_acesso'])->where('pessoas.pessoa_id', '=', $id)->get();
+        $dados_pessoa = User::join('pessoa_tipo', 'users.pessoa_tipo_fk', '=', 'pessoa_tipo.pessoa_tipo_id')
+        ->select(['users.id', 'users.imagem', 'users.nome', 'users.senha', 'users.telefone', 'users.cpf', 'users.email', 'pessoa_tipo.descricao as nivel_de_acesso'])->where('users.id', '=', $id)->get();
         
         $nivel_de_acesso = $this->nivel_de_acesso();
         
@@ -196,7 +196,7 @@ class PessoaController extends Controller
         $cpf = str_replace("-", "", $cpf);
         $cpf = str_replace("/", "", $cpf);
 
-        $imagem_antiga = Pessoa::select('imagem')->where('pessoa_id', $request->id)->get();
+        $imagem_antiga = User::select('imagem')->where('id', $request->id)->get();
         
         if ($request->hasFile('uploadFile')) {
             //deletar a imagem antiga que tá na pasta.
@@ -208,7 +208,7 @@ class PessoaController extends Controller
             } else return response()->json("Erro ao editar!", 500);
         } 
         
-        $pessoa = Pessoa::find($request->id);
+        $pessoa = User::find($request->id);
         $pessoa->nome = $request->nome;
         $pessoa->telefone = $request->telefone;
         $pessoa->cpf = $request->cpf;
@@ -236,7 +236,7 @@ class PessoaController extends Controller
     */
     protected function excluirPessoa(Request $id)
     {
-        $deletar = Pessoa::find($id->id);
+        $deletar = User::find($id->id);
         $deletar->data_de_exclusao = now();
         $deletar->save();
         return response()->json(null, 200);

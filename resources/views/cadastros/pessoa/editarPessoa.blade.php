@@ -51,7 +51,7 @@
                         <div class="form-group col-md-6">
                             <label for="nome">Nome</label>
                             <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome completo." value="{{$dados_pessoa[0]->nome}}">
-                            <input type="hidden" class="form-control" id="id" name="id" value="{{$dados_pessoa[0]->pessoa_id}}">
+                            <input type="hidden" class="form-control" id="id" name="id" value="{{$dados_pessoa[0]->id}}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="cpf">CPF</label>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Mesa;
 
@@ -82,10 +83,12 @@ class mesaController extends Controller
     {
         //
     }
-    public function estado($id){
-        $mesa = Mesa::find($id);
-        if(isset($mesa)){
-            
+    public function estado(Request $request){
+        $mesan = $_GET['mesaa'];
+        $mesa_stado = DB::select('SELECT disponibilidade FROM mesas WHERE nome=?',[$mesan]);
+        
+        if(isset($mesa_stado)){
+            return view('mesa.mesa', compact('mesa_stado'));
         }
     }
 }

@@ -4,10 +4,25 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use SoftDeletes;
+    
+    /**
+    * A tabela mysql associada ao model.
+    * @var string
+    */
+    protected $table = 'users';
+    
+    /**
+    * A chave primária da tabela.
+    * @var string
+    */
+    protected $primaryKey = 'id';
     
     /**
     * The attributes that are mass assignable.
@@ -15,7 +30,7 @@ class User extends Authenticatable
     * @var array
     */
     protected $fillable = [
-        'nome', 'telefone', 'email', 'cpf', 'senha', 'pessoa_tipo_fk', 'data_de_criacao', 'ultima_atualizacao'
+        'nome', 'telefone', 'email', 'cpf', 'senha', 'pessoa_tipo_fk', 'data_de_criacao', 'ultima_atualizacao', 'data_de_exclusao'
     ];
     
     /**
@@ -24,7 +39,7 @@ class User extends Authenticatable
     * @var array
     */
     protected $hidden = [
-        'senha'
+        'senha', 'remember_token'
     ];
     
     /**
@@ -37,5 +52,11 @@ class User extends Authenticatable
     * Coluna last_update timestamp modificada.
     * @var string
     */
-    const UPDATED_AT = 'ultima_atualizcao';
+    const UPDATED_AT = 'ultima_atualizacao';
+    
+    /**
+    * Coluna delete_at timestamp modificada.
+    * @var string
+    */
+    const DELETED_AT = 'data_de_exclusao';
 }
