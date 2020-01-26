@@ -182,7 +182,6 @@
                 <i class="fas fa-chart-bar nav-icon"></i>
                 <p>
                   Página inicial
-                  <!-- <span class="right badge badge-danger">New</span> -->
                 </p>
               </a>
             </li>
@@ -191,7 +190,6 @@
                 <i class="fas fa-clipboard-list nav-icon"></i>
                 <p>
                   Pedidos
-                  <!-- <span class="right badge badge-danger">New</span> -->
                 </p>
               </a>
             </li>
@@ -200,7 +198,6 @@
                 <i class="nav-icon fa fa-th"></i>
                 <p>
                   Mesas
-                  <!-- <span class="right badge badge-danger">New</span> -->
                 </p>
               </a>
             </li>
@@ -209,7 +206,6 @@
                 <i class="fas fa-utensils nav-icon"></i>
                 <p>
                   Cardápio
-                  <!-- <span class="right badge badge-danger">New</span> -->
                 </p>
               </a>
             </li>
@@ -218,7 +214,6 @@
                 <i class="fas fa-suitcase nav-icon"></i>
                 <p>
                   Gerente
-                  <!-- <span class="right badge badge-danger">New</span> -->
                 </p>
               </a>
             </li>
@@ -237,12 +232,12 @@
                     <p>Pessoas</p>
                   </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                   <a href="./index2.html" class="nav-link" style="color: white !important;">
                     <i class="nav-icon fa fa-th"></i>
                     <p>Mesas</p>
                   </a>
-                </li>
+                </li> --}}
               </ul>
               
               <li class="nav-item"  style="list-style-type: none; margin-top: 4rem; display: flex; justify-content: center; align-items: center;">

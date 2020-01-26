@@ -41,13 +41,24 @@ class CardapioController extends Controller
      */
     public function store(Request $request)
     {
-        $prat = new Prato();
-        $prat->nome = $request->input('name');
-        $prat->preco = $request->input('price');
-        $prat->categoria_prato_fk=$request->input('descricaoCat');
-        $prat->descricao = $request->input('descricao');
-        $prat->save();
-        return redirect('/cardapio');
+        // return response()->json($request->name, 200);
+        if ($request->hasFile('uploadFile')) {
+            $imagem = $request->uploadFile;
+            $name = $request->name.".".$imagem->getClientOriginalExtension();
+            $destinationPath = public_path('img_pratos');
+            $imagem->move($destinationPath, $name);
+            
+            $prat = new Prato();
+            $prat->nome = $request->input('name');
+            $prat->preco = $request->input('price');
+            $prat->categoria_prato_fk = $request->input('descricaoCat');
+            $prat->descricao = $request->input('descricao');
+            $prat->imagem = $name;
+            $prat->save();
+            
+            return "Cadastrado prato com sucesso!";
+        }
+
 
     }
 
@@ -107,6 +118,7 @@ class CardapioController extends Controller
     public function destroy($id){
         $prato = Prato::find($id);
         if(isset($prato)){
+            unlink(public_path('img_pratos/'.$prato->imagem));
             $prato->delete();
         }
         return redirect('/cardapio');

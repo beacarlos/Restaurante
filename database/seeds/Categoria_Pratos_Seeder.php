@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use App\CategoriaPrato;
 use App\PessoaTipo;
 use App\Mesa;
+use App\User;
 
 class Categoria_Pratos_Seeder extends Seeder
 {
@@ -32,6 +34,16 @@ class Categoria_Pratos_Seeder extends Seeder
             ['descricao'=> 'Massas'],
             ['descricao'=> 'Sobremessas']
             ]);
+            
+            $pessoa = new User;
+            $pessoa->query()->truncate();
+            $pessoa->nome = 'Admin';
+            $pessoa->telefone = "(99) 9 9999-9999";
+            $pessoa->cpf = "000.000.000-81";
+            $pessoa->email = "admin@gmail.com";
+            $pessoa->password = Hash::make(12345678);
+            $pessoa->pessoa_tipo_fk = 2;
+            $pessoa->save();
             
             DB::statement('SET FOREIGN_KEY_CHECKS=1');
         }

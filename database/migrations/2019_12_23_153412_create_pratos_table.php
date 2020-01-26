@@ -19,6 +19,7 @@ class CreatePratosTable extends Migration
             $table->string('descricao', 200)->nullable(false);
             $table->double('preco', 8, 2)->nullable(false);
             $table->boolean('ativo')->default(1);
+            $table->string('imagem', 255)->default('user.png');
             $table->integer('categoria_prato_fk')->unsigned();
             $table->foreign('categoria_prato_fk')->references('categoria_prato_id')->on('categoria_pratos');   
             $table->timestamp('data_de_criacao')->default(DB::raw('CURRENT_TIMESTAMP'));
