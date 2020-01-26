@@ -9,9 +9,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Auth::routes();
+
 Route::get('/', function () {
-    return view('login.entrar');
-})->name('entrar.view');
+    return view('auth.login');
+})->name('login.view');
 
 Route::get('/dashboard', function () {
     return view('dashboard.dashboard');
@@ -69,6 +72,3 @@ Route::group(['prefix' => 'pessoa'], function () {
     Route::post('/excluir', 'PessoaController@excluirPessoa')->name('pessoa.exluir');
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
