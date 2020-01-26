@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
-            $table->string('imagem', 255)->unique()->nullable(false);  
+            $table->string('imagem', 255)->default('user.png')->unique()->nullable(false);  
             $table->integer('pessoa_tipo_fk')->unsigned();
             $table->foreign('pessoa_tipo_fk')->references('pessoa_tipo_id')->on('pessoa_tipo');  
             $table->timestamp('data_de_criacao')->default(DB::raw('CURRENT_TIMESTAMP'));
