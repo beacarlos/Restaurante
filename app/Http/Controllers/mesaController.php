@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Mesa;
 
+
 class mesaController extends Controller
 {
     /**
@@ -93,4 +94,7 @@ class mesaController extends Controller
         }
     }
     */
+    public function comanda_mesa(){
+        
+    }
 }
