@@ -25,6 +25,10 @@ Route::get('/dashboard', function () {
 Route::get('/mesa', function () {
     return view('mesa.mesa');
 })->name('mesa.index');
+/*
+Route::group(['prefix' => 'mesa'], function () {
+    Route::get('/', 'mesaController@estado')->name('mesa.index');
+});*/
 
 Route::group(['prefix' => 'cardapio'], function () {
     Route::get('/', 'CardapioController@index')->name('cardapio.index');
