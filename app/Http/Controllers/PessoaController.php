@@ -181,7 +181,7 @@ class PessoaController extends Controller
     protected function editarPessoaView($id)
     {
         $dados_pessoa = User::join('pessoa_tipo', 'users.pessoa_tipo_fk', '=', 'pessoa_tipo.pessoa_tipo_id')
-        ->select(['users.id', 'users.imagem', 'users.nome', 'users.senha', 'users.telefone', 'users.cpf', 'users.email', 'pessoa_tipo.descricao as nivel_de_acesso'])->where('users.id', '=', $id)->get();
+        ->select(['users.id', 'users.imagem', 'users.nome', 'users.password', 'users.telefone', 'users.cpf', 'users.email', 'pessoa_tipo.descricao as nivel_de_acesso'])->where('users.id', '=', $id)->get();
         
         $nivel_de_acesso = $this->nivel_de_acesso();
         
