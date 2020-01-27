@@ -41,9 +41,9 @@ Route::group(['prefix' => 'cardapio'], function () {
 Route::post('/CategoriaPrato', 'categoriaController@store');
 //Route::post('/CategoriaPrato', 'categoriaController@index');  
 
-Route::get('/pedido', function () {
-    return view('pedido.pedido');
-})->name('pedidos.index');
+Route::group(['prefix' => 'pedido'], function () {
+    Route::get('/', 'pedidoController@index')->name('pedidos.index');
+});
 
 
 /*
