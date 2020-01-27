@@ -156,7 +156,7 @@ class PessoaController extends Controller
             $pessoa->telefone = $request->telefone;
             $pessoa->cpf = $request->cpf;
             $pessoa->email = $request->email;
-            $pessoa->senha = Hash::make($request->password);
+            $pessoa->password = Hash::make($request->password);
             $pessoa->imagem = $name;
             $pessoa->pessoa_tipo_fk = $request->nivel_de_acesso;
             $pessoa->save();
@@ -215,7 +215,7 @@ class PessoaController extends Controller
         $pessoa->email = $request->email;
 
         if (!empty($request->password)) {
-            $pessoa->senha = Hash::make($request->password);
+            $pessoa->password = Hash::make($request->password);
         }
 
         if ($request->hasFile('uploadFile')) {

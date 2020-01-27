@@ -1,4 +1,4 @@
-@extends('layouts.login')
+@extends('Layouts.login')
 
 @section('content')
 <div class="alert-content">

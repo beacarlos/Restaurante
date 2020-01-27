@@ -166,7 +166,8 @@
       <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
+
+          <div class="image">
             <img src="{{ asset('/img_perfil/'.Auth::user()->imagem) }}" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
@@ -182,7 +183,6 @@
                 <i class="fas fa-chart-bar nav-icon"></i>
                 <p>
                   Página inicial
-                  <!-- <span class="right badge badge-danger">New</span> -->
                 </p>
               </a>
             </li>
@@ -191,7 +191,6 @@
                 <i class="fas fa-clipboard-list nav-icon"></i>
                 <p>
                   Pedidos
-                  <!-- <span class="right badge badge-danger">New</span> -->
                 </p>
               </a>
             </li>
@@ -200,7 +199,6 @@
                 <i class="nav-icon fa fa-th"></i>
                 <p>
                   Mesas
-                  <!-- <span class="right badge badge-danger">New</span> -->
                 </p>
               </a>
             </li>
@@ -209,7 +207,6 @@
                 <i class="fas fa-utensils nav-icon"></i>
                 <p>
                   Cardápio
-                  <!-- <span class="right badge badge-danger">New</span> -->
                 </p>
               </a>
             </li>
@@ -218,7 +215,6 @@
                 <i class="fas fa-suitcase nav-icon"></i>
                 <p>
                   Gerente
-                  <!-- <span class="right badge badge-danger">New</span> -->
                 </p>
               </a>
             </li>
@@ -237,25 +233,23 @@
                     <p>Pessoas</p>
                   </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                   <a href="./index2.html" class="nav-link" style="color: white !important;">
                     <i class="nav-icon fa fa-th"></i>
                     <p>Mesas</p>
                   </a>
-                </li>
+                </li> --}}
               </ul>
               
-            <li class="nav-item"  style="    list-style-type: none; margin-top: 4rem; display: flex; justify-content: center; align-items: center;">
-              <a href="{{ route('logout') }}" style="font-size: 16px; color: #fff; height: 41px; width: 100%;" class="nav-link gerente btn btn-danger btn-lg" style="color: white !important;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-              <i class="fas fa-sign-out-alt"></i>
-                <p>
-                  sair
-                </p>
-              </a>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              <li class="nav-item"  style="list-style-type: none; margin-top: 4rem; display: flex; justify-content: center; align-items: center;">
+                <a href="{{ route('logout') }}" style="font-size: 16px; color: #fff; height: 41px; width: 100%; background-color: red !important;" class="nav-link gerente btn btn-danger btn-lg" style="color: white !important;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                  <i class="fas fa-sign-out-alt"></i>
+                  <p>sair</p>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   {{ csrf_field() }}
-              </form>
-            </li>
+                </form>
+              </li>
             </li>
           </nav>
           <!-- /.sidebar-menu -->
