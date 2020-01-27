@@ -26,6 +26,7 @@ Route::group(['prefix' => 'mesa'], function () {
     Route::get('/ver', 'mesaController@mostrarMesas')->name('mesa.mostrarMesas');
     Route::get('/comandax', 'mesaController@mostrarComanda')->name('mesa.comanda');
     Route::get('/comandax/{id}', 'mesaController@mostracomanda')->name('mesa.comanda');
+    Route::get('/mesa/pedido/excluir/{id}', 'mesaController@destroy')->name('mesa.pedido');
 });
 
 Route::group(['prefix' => 'cardapio'], function () {

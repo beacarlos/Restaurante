@@ -95,14 +95,21 @@ class mesaController extends Controller
      */
     public function destroy($id)
     {
-    
+        $pedido = Pedido::find($id);
+        $pedido->delete();
+        return redirect('/mesas');
     }
     public function mostracomanda($id){
+        
         $mesa = DB::select('SELECT comanda_id FROM comandas WHERE mesa_fk = ?',[$id]);
         $mesa = intval($mesa);
+
         if(isset($mesa)){
-            $comandax = DB::select('SELECT pedidos.quantidade, pedidos.preco_total, pratos.nome FROM pratos, pedidos WHERE pedidos.comanda_fk= ?', [$mesa]);
-            return view('mesa.comanda', compact('comandax'));
+            $comandax = DB::select('SELECT pedidos.pedido_id, pedidos.quantidade, pedidos.preco_total, pratos.nome FROM pratos, pedidos WHERE pedidos.comanda_fk= ?', [$mesa]);
+            $valor_tot[] = DB::select('SELECT SUM(preco_total) as b FROM pedidos WHERE comanda_fk=?',[$mesa]);
+            $valor_tot = floatval($valor_tot);
+            
+            return view('mesa.comanda', compact('comandax', 'valor_tot'));
         }
         return view('mesa.comanda');
     }

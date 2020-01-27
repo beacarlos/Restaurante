@@ -28,7 +28,7 @@
             <!-- Modal body -->
             <div class="modal-body">
                <div class="container">
-                  <form action="#" method="POST" class="was-validated" id="novo_prato">
+                  <form action="/cardapio/novoprato" method="POST" class="was-validated" id="novo_prato">
                      {{ csrf_field() }}
                      <div class="form-group">
                         <div class="col">

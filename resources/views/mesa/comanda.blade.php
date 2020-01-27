@@ -3,13 +3,17 @@
 @section('body')
 <div class="content">
     <div class="container-fluid">
-        <h4 class="titulo"><i class="fas fa-clipboard-list nav-icon"></i> Comanda</h4>
+        <h4 class="titulo"><i class="fas fa-clipboard-list nav-icon"></i> Comanda mesa </h4>
         <div class="row d-flex linha_titulo"></div>
+        <div>
+            
+        </div>
         <div class="row d-flex justify-content-center">
             <div class="col-11" id="div_fluxo">
                 <table class="table table-bordered justify-content-center" id="tabela_fluxo" style="margin-top: 0% !important; border-top: none !important; width: 100% !important; text-align: center;">
                     <thead class="thead-dark">
                         <tr>
+                            <th>#</th>
                             <th scope="col">Prato</th>
                             <th scope="col">Quantidade</th>
                             <th scope="col">Valor</th>
@@ -19,11 +23,12 @@
                     <tbody>
                         @foreach ($comandax as $com) 
                             <tr>
+                                <td>{{$com->pedido_id}}</td>
                                 <td>{{$com->nome}}</td>
                                 <td>{{$com->quantidade}}</td>
-                                <td>{{$com->nome}}</td>
+                                <td>R$ {{$com->preco_total}}</td>
                                 <td>
-                                    <button class="btn btn-danger" href=>APAGAR</a>
+                                    <a href="/mesa/pedido/excluir/{{$com->pedido_id}}" class="btn btn-danger">Excluir</a>
                                 </td>
                             </tr>
                         @endforeach 
@@ -34,7 +39,7 @@
                             <tr>
                                 <th></th>
                                 <th scope="col">Total</th>
-                                <th scope="col">{total}</th>
+                                <th scope="col">{{$valor_tot}}</th>
                             </tr>
                         </thead>
                     </table>
