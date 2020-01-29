@@ -18,11 +18,11 @@
                       <label for="acesso">Pratos </label>
                       <select id="acesso" class="form-control" name="nivel_de_acesso">
                           <option value="" selected>Escolher prato...</option>
-                          {{-- @foreach ($nivel_de_acesso as $item)
-                          <option value="{{$item->pessoa_tipo_id}}">
-                              {{$item->descricao}}
+                           @foreach ($pratos as $item)
+                          <option value="{{$item->prato_id}}">
+                              {{$item->nome}}
                           </option>
-                          @endforeach --}}
+                          @endforeach
                       </select>
                     </div>
                   </div>
@@ -31,11 +31,11 @@
                         <label for="acesso">Comanda </label>
                         <select id="acesso" class="form-control" name="nivel_de_acesso">
                             <option value="" selected>Escolher comanda...</option>
-                            {{-- @foreach ($nivel_de_acesso as $item)
-                            <option value="{{$item->pessoa_tipo_id}}">
-                                {{$item->descricao}}
+                             @foreach ($dados_comandas as $item)
+                            <option value="{{$item->comanda_id}}">
+                                {{$item->mesa_fk}}
                             </option>
-                            @endforeach --}}
+                            @endforeach
                         </select>
                       </div>
                         <div class="form-group col-md-6">
