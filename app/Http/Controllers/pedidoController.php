@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Prato;
 use App\Comanda;
+use App\Pedido;
 
 class pedidoController extends Controller
 {
@@ -39,6 +40,20 @@ class pedidoController extends Controller
     {
         //
     }
+
+        /**
+    * Show the form for creating a new resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function novoprato()
+    {
+        $pratos = Prato::all();
+        $dados_comandas = Comanda::all();
+
+        return view("pedido.cadastrar",compact('pratos', 'dados_comandas'));
+        
+    }
     
     /**
     * Store a newly created resource in storage.
@@ -48,9 +63,15 @@ class pedidoController extends Controller
     */
     public function store(Request $request)
     {
-        $pratos = Prato::all();
-        $dados_comandas = Comanda::all();
-        return view("pedido.cadastrar",compact('pratos', 'dados_comandas'));
+        $pedido = new Pedido();
+        $pedido->quantidade = $request->input('quantidade');
+        $pedido->status = 1;
+        $pedido->preco_total= 50;
+        $pedido->comanda_fk=$request->input('comanda');
+        $pedido->prato_fk = $request->input('prato');
+        $pedido->save();
+
+        return redirect('/pedido');
     }
     
     /**
