@@ -106,7 +106,7 @@ class mesaController extends Controller
 
         if(isset($mesa)){
             $comandax = DB::select('SELECT pedidos.pedido_id, pedidos.quantidade, pedidos.preco_total, pratos.nome FROM pratos, pedidos WHERE pedidos.comanda_fk= ?', [$mesa]);
-            $valor_tot[] = DB::select('SELECT SUM(preco_total) as b FROM pedidos WHERE comanda_fk=?',[$mesa]);
+            $valor_tot[] = DB::select('SELECT SUM(preco_total) FROM pedidos WHERE comanda_fk=?',[$mesa]);
             $valor_tot = floatval($valor_tot);
             
             return view('mesa.comanda', compact('comandax', 'valor_tot'));

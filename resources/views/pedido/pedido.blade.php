@@ -16,25 +16,25 @@
 	</div>
 	
 	<div class="row">
-		@for ($i = 1; $i <= $comandas; $i++)
-		<div class="col-4">
-			<div class="card text-white bg mb-3" style="max-width: 18rem;">
-				<div class="card-header">Comanda {{$pedidos[$i]->comanda_id}} </div>
-				<div class="card-body">
-					@foreach ($pedidos as $item)
-					@if ($i == $item->comanda_id)
-					<p class="card-text"><i class="fas fa-check"></i> {{ $item->quantidade }} - {{ $item->nome }}	</p>
-					@endif
-					@endforeach
-				</div>
-				<div class="card-footer">
-					<div class="spam-mesas">
-						<p>Local: {{$pedidos[$i]->mesa}}</p>
-					</div> 
-					<button class="button-check">Concluir</button>
+		@for ($i = 0; $i <= $comandas; $i++)
+			<div class="col-4">
+				<div class="card text-white bg mb-3" style="max-width: 18rem;">
+					<div class="card-header">Comanda {{$pedidos[$i]->comanda_id}} </div>
+					<div class="card-body">
+						@foreach ($pedidos as $item)
+						@if ($i == $item->comanda_id)
+						<p class="card-text"><i class="fas fa-check"></i> {{ $item->quantidade }} - {{ $item->nome }}	</p>
+						@endif
+						@endforeach
+					</div>
+					<div class="card-footer">
+						<div class="spam-mesas">
+							<p>Local: {{$pedidos[$i]->mesa}}</p>
+						</div> 
+						<button class="button-check">Concluir</button>
+					</div>
 				</div>
 			</div>
-		</div>
 		@endfor
 		
 	</div>
