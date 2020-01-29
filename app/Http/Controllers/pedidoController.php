@@ -48,7 +48,9 @@ class pedidoController extends Controller
     */
     public function store(Request $request)
     {
-        return view("pedido.cadastrar");
+        $pratos = Prato::all();
+        $dados_comandas = Comanda::all();
+        return view("pedido.cadastrar",compact('pratos', 'dados_comandas'));
     }
     
     /**
