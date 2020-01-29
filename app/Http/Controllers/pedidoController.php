@@ -23,7 +23,7 @@ class pedidoController extends Controller
         $pedidos = DB::select('SELECT pratos.nome, mesas.mesa_id, mesas.nome as mesa,comandas.comanda_id,  pedidos.status, pedidos.quantidade  from pedidos 
         inner JOIN comandas on comandas.comanda_id
         inner JOIN mesas on mesas.mesa_id = comandas.mesa_fk
-        inner JOIN pratos on pratos.prato_id = pedidos.pedido_id
+        inner JOIN pratos on pratos.prato_id = pedidos.prato_fk
         WHERE comandas.status = 1');
 
         $comandas = DB::table('comandas')->select()->where('status', 1)->count();

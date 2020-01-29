@@ -10,7 +10,7 @@
     
     <div class="container" >
         <div class="alert alert-danger" style="display:none"></div>
-        <form action="/cadastrar" method="POST">
+        <form action="/pedido/cadastrar" method="POST">
           {{ csrf_field() }}
 
             <div class="row">
@@ -59,10 +59,6 @@
         </form>
     </div>
 </div>
-@endsection
-
-@section('js')
-<script src="{{ asset('js/pessoa.js') }}"></script>
 @endsection
 
 @section('css')
