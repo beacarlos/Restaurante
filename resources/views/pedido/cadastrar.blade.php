@@ -18,9 +18,9 @@
                       <label for="acesso">Pratos </label>
                       <select id="acesso" class="form-control" name="nivel_de_acesso">
                           <option value="" selected>Escolher prato...</option>
-                           @foreach ($pratos as $item)
+                          @foreach ($pratos as $item)
                           <option value="{{$item->prato_id}}">
-                              {{$item->nome}}
+                            {{$item->nome}}
                           </option>
                           @endforeach
                       </select>
@@ -35,7 +35,7 @@
                             <option value="{{$item->comanda_id}}">
                                 {{$item->mesa_fk}}
                             </option>
-                            @endforeach
+                            @endforeach 
                         </select>
                       </div>
                         <div class="form-group col-md-6">
@@ -49,7 +49,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                          <button type="submit" class="btn btn-primary">Cadastrar Pessoa</button>
+                          <button type="submit" class="btn btn-primary">Salvar Pedido</button>
                         </div>
                     </div>
                 </div>
