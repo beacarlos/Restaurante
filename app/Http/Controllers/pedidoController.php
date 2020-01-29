@@ -21,7 +21,7 @@ class pedidoController extends Controller
         $dados_comandas = Comanda::all();
 
         $pedidos = DB::select('SELECT pratos.nome, mesas.mesa_id, mesas.nome as mesa,comandas.comanda_id,  pedidos.status, pedidos.quantidade  from pedidos 
-        inner JOIN comandas on comandas.comanda_id
+        inner JOIN comandas on comandas.comanda_id = pedidos.comanda_fk
         inner JOIN mesas on mesas.mesa_id = comandas.mesa_fk
         inner JOIN pratos on pratos.prato_id = pedidos.prato_fk
         WHERE comandas.status = 1');
