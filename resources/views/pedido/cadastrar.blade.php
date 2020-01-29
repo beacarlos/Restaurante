@@ -10,13 +10,15 @@
     
     <div class="container" >
         <div class="alert alert-danger" style="display:none"></div>
-        <form>
+        <form action="/cadastrar" method="POST">
+          {{ csrf_field() }}
+
             <div class="row">
                 <div class="col-8">
                   <div class="form-row">
                     <div class="form-group col-md-6">
-                      <label for="acesso">Pratos </label>
-                      <select id="acesso" class="form-control" name="nivel_de_acesso">
+                      <label for="prato">Pratos </label>
+                      <select id="prato" class="form-control" name="prato">
                           <option value="" selected>Escolher prato...</option>
                           @foreach ($pratos as $item)
                           <option value="{{$item->prato_id}}">
@@ -28,8 +30,8 @@
                   </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
-                        <label for="acesso">Comanda </label>
-                        <select id="acesso" class="form-control" name="nivel_de_acesso">
+                        <label for="comanda">Comanda </label>
+                        <select id="comanda" class="form-control" name="comanda">
                             <option value="" selected>Escolher comanda...</option>
                              @foreach ($dados_comandas as $item)
                             <option value="{{$item->comanda_id}}">
@@ -43,8 +45,8 @@
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
-                        <label for="telefone">Quantidade</label>
-                        <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone.">
+                        <label for="quantidade">Quantidade</label>
+                        <input type="text" class="form-control" id="quantidade" name="quantidade" placeholder="Quantidade.">
                       </div>
                     </div>
                     <div class="form-row">

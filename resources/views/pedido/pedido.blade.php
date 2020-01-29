@@ -9,6 +9,12 @@
 		<p class="info_titulo">Lista de pedidos.</p>
 	</div>
 	
+	<div class="container" style="margin-bottom: 1rem;">
+		<a href="/pedido/cadastrar" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+			Novo Pedido
+		</a>
+	</div>
+	
 	<div class="row">
 		@for ($i = 1; $i <= $comandas; $i++)
 		<div class="col-4">

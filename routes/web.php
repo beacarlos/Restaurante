@@ -46,7 +46,8 @@ Route::post('/CategoriaPrato', 'categoriaController@store');
 
 Route::group(['prefix' => 'pedido'], function () {
     Route::get('/', 'pedidoController@index')->name('pedidos.index');
-    Route::get('/cadastrar', 'pedidoController@store')->name('pedidos.store');
+    Route::get('/cadastrar', 'pedidoController@novoprato')->name('pedidos.novopedido');
+    Route::post('/cadastrar', 'pedidoController@store')->name('pedidos.store');
 });
 
 
