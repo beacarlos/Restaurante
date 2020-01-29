@@ -10,7 +10,7 @@
 	</div>
 	
 	<div class="container" style="margin-bottom: 1rem;">
-		<a href="/pedido/cadastrar" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+		<a href="/pedido/cadastrar" class="btn btn-primary">
 			Novo Pedido
 		</a>
 	</div>
