@@ -120,7 +120,7 @@ class PessoaController extends Controller
         }
         
         if ($validator->fails()) {
-            return response()->json(['errors'=>$validator->errors()->all()], 500);
+            return response()->json(['error'=>$validator->errors()->all()]);
         } else {
             if ($request->tela === 'cadastro') {
                 return $this->cadastrarPessoa($request);    

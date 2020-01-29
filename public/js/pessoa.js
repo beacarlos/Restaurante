@@ -41,19 +41,25 @@ $("form").submit(function (e) {
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        success: function (response) {
-            $('form')[0].reset();
-            $('.imagePreview').attr('src', "/img/user.png");
-            Swal.fire({
-                type: 'success',
-                title: 'Sucesso!',
-                text: response,
-                timer: 1500
-            });
+        success: function (data) {
+            // $('form')[0].reset();
+            // $('.imagePreview').attr('src', "/img/user.png");
+            // Swal.fire({
+            //     type: 'success',
+            //     title: 'Sucesso!',
+            //     text: response,
+            //     timer: 1500
+            // });
+
+            if($.isEmptyObject(data.error)){
+                alert(data.success);
+            }else{
+                console.log(data);
+            }
         },
         statusCode: { 
             500: function (response) {
-                console.log("hdjh");
+                console.log(response.responseText);
             }
         }       
     });
