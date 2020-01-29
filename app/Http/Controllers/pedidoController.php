@@ -17,7 +17,7 @@ class pedidoController extends Controller
     public function index()
     {
         $pratos = Prato::all();
-        $full_dados_comandas = Comanda::all();
+        $dados_comandas = Comanda::all();
 
         $pedidos = DB::select('SELECT pratos.nome, mesas.mesa_id, mesas.nome as mesa,comandas.comanda_id,  pedidos.status, pedidos.quantidade  from pedidos 
         inner JOIN comandas on comandas.comanda_id
@@ -27,7 +27,7 @@ class pedidoController extends Controller
 
         $comandas = DB::table('comandas')->select()->where('status', 1)->count();
         
-        return view("pedido.pedido", compact('pedidos', 'comandas', 'pratos', 'full_dados_comandas'));
+        return view("pedido.pedido", compact('pedidos', 'comandas', 'pratos', 'dados_comandas'));
     }
     
     /**
